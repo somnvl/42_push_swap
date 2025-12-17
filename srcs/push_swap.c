@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/17 17:39:19 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/17 17:41:43 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 // 	return (0);
 // }
 
-int	check_args(int argc, char **argv)
+int	check_digits_only(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -48,7 +48,7 @@ int	check_args(int argc, char **argv)
 
 int	main(int argc, char **argv)
 {
-	if (argc == 1 || check_args(argc, argv) == 1)
+	if (argc == 1 || check_digits_only(argc, argv) == 1)
 		ft_printf("Error\n");
 	else
 		ft_printf("OK"); 
