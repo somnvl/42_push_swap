@@ -6,42 +6,43 @@
 #    By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2025/12/17 00:00:52 by somenvie         ###   ########.fr        #
+#    Updated: 2025/12/17 12:52:37 by somenvie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap.a
+NAME = push_swap
 
 CC = cc
 CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = rcs
-RM = rm -rf
-INCLUDES = includes
+LIBFT = ./libft/libft.a
+INCLUDE = -I./include
 
-SRCS = srcs/ft_printf.c \
-		srcs/conversions.c \
+SRCS = srcs/push_swap.c \
+		srcs/push_swap_utils.c \
 
-OBJS = $(SRCS:.c=.o)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c $< -o $@
+OBJ_DIR = obj
+OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 
 all: $(NAME)
 
-$(NAME): $(OBJS)
-	$(AR) $(ARFLAGS) $(NAME) $(OBJS)
-	mkdir libs/o_libft
-	ar x libs/libft.a --output libs/o_libft 
-	ar rcs libftprintf.a srcs/ft_printf.o srcs/conversions.o libs/o_libft/ft_putchar_fd.o libs/o_libft/ft_strlen.o
-	
+$(NAME): $(LIBFT) $(OBJ) 
+	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+
+$(LIBFT):
+	@$(MAKE) -C ./libft
+
+$(OBJ_DIR)/%.o: ./srcs/%.c
+	@mkdir -p $(OBJ_DIR)
+	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
+
 clean:
-	$(RM) $(OBJS)
-	$(RM) libs/o_libft/
- 
+	@$(MAKE) clean -C ./libft
+	@rm -rf $(OBJ_DIR)
+
 fclean: clean
-	$(RM) $(NAME)
+	@$(MAKE) fclean -C ./libft
+	@rm -f $(NAME)
 
 re: fclean all
-
-.PHONY: all bonus clean fclean re
