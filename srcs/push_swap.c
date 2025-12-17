@@ -6,27 +6,13 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/17 17:41:43 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/17 18:00:04 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// int	check_duplicata(int nb, t_list *lst)
-// {
-// 	t_list	*tmp;
-
-// 	tmp = lst;
-// 	while (tmp->next)
-// 	{
-// 		if (nb == tmp->content)
-// 			return (1);
-// 		tmp = tmp->next;
-// 	}
-// 	return (0);
-// }
-
-int	check_digits_only(int argc, char **argv)
+int	digits_only(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -46,15 +32,45 @@ int	check_digits_only(int argc, char **argv)
 	return (0);
 }
 
+t_list	lst_init(int argc, char **argv)
+{
+
+}
+
 int	main(int argc, char **argv)
 {
-	if (argc == 1 || check_digits_only(argc, argv) == 1)
+	t_list	lst;
+	
+	/* DIGITS ONLY */
+	if (argc == 1 || digits_only(argc, argv) == 1)
+	{
 		ft_printf("Error\n");
-	else
-		ft_printf("OK"); 
-//	else
-		// atoi into list args -> filter min && max
+		return (0);
+	}
+	
+	lst = lst_init(argc, argv);
+	/* < INT_MIN || > INT_MAX */
+	/* DUPLICATA */
+}
+
+
+// atoi into list args -> filter min && max
 		// check duplicata
 		// algorithm
-}
+
+
+// int	check_duplicata(int nb, t_list *lst)
+// {
+// 	t_list	*tmp;
+
+// 	tmp = lst;
+// 	while (tmp->next)
+// 	{
+// 		if (nb == tmp->content)
+// 			return (1);
+// 		tmp = tmp->next;
+// 	}
+// 	return (0);
+// }
+
 
