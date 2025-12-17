@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/17 18:00:04 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/17 18:04:50 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,23 +32,23 @@ int	digits_only(int argc, char **argv)
 	return (0);
 }
 
-t_list	lst_init(int argc, char **argv)
-{
-
-}
+// t_list	lst_init(int argc, char **argv)
+// {
+// 	// ft_lstnew
+// 	// content = atoi de argv
+// }
 
 int	main(int argc, char **argv)
 {
-	t_list	lst;
-	
 	/* DIGITS ONLY */
 	if (argc == 1 || digits_only(argc, argv) == 1)
 	{
+		ft_printf("%c\n", argv[0][3]);
 		ft_printf("Error\n");
 		return (0);
 	}
 	
-	lst = lst_init(argc, argv);
+	// lst = lst_init(argc, argv);
 	/* < INT_MIN || > INT_MAX */
 	/* DUPLICATA */
 }
