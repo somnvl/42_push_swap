@@ -6,13 +6,13 @@
 #    By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2025/12/17 12:52:37 by somenvie         ###   ########.fr        #
+#    Updated: 2025/12/17 17:17:09 by somenvie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-CC = cc
+CC = cc -g
 CFLAGS = -Wall -Wextra -Werror
 AR = ar
 ARFLAGS = rcs
