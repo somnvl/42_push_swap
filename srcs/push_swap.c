@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/17 18:04:50 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/18 13:48:09 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	digits_only(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if ((argv[i][j] < '0' || argv[i][j] > '9') && argv[i][j] != ' ')
+			if (ft_isdigit(argv[i][j] == 1) 
+				&& argv[i][j] != ' ' && argv[i][j] != '+' && argv[i][j] != '-')
 				return (1);
 			j++;
 		}
@@ -49,6 +50,7 @@ int	main(int argc, char **argv)
 	}
 	
 	// lst = lst_init(argc, argv);
+		// generate my list with atoi (which filter min & max)
 	/* < INT_MIN || > INT_MAX */
 	/* DUPLICATA */
 }
