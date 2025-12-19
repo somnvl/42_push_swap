@@ -6,7 +6,7 @@
 #    By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2025/12/19 19:19:13 by somenvie         ###   ########.fr        #
+#    Updated: 2025/12/19 22:17:29 by somenvie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,8 @@ ARFLAGS = rcs
 LIBFT = ./libft/libft.a
 INCLUDE = -I./include
 
-SRCS = srcs/parsing.c \
+SRCS = srcs/main.c \
+		srcs/parsing.c \
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
