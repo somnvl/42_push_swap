@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 00:20:31 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 00:37:46 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,10 +67,12 @@ t_list	*lst_creator(int argc, char **argv)
 	t_list	*lst;
 	
 	i = 1;
-	lst = ft_lstnew(argv[i++]);
+	lst = NULL;
 	while (i < argc)
 	{
-		if (is_quoted(i, argv))
+		if (argv[i][0] =='\0')
+			i++;
+		else if (is_quoted(i, argv))
 		{
 			j = 0;
 			split = ps_split(argv[i], ' ');
@@ -79,10 +81,13 @@ t_list	*lst_creator(int argc, char **argv)
 				ft_lstadd_back(&lst, ft_lstnew(split[j]));
 				j++;
 			}
+			i++;
 		}
 		else
+		{
 			ft_lstadd_back(&lst, ft_lstnew(argv[i]));
-		i++;
+			i++;
+		}
 	}
 	return (lst);
 }
