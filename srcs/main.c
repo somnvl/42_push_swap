@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 00:14:29 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 00:20:07 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	main(int argc, char **argv)
 
 // SPLIT
 	// not working with the first arg is quoted
-	// need to skip whitespaces only arg
+	// need to skip empty args
 
 // LST
 	// atoi each content and filter INT MIN and MAX
