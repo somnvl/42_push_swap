@@ -6,14 +6,14 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/19 22:43:16 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/19 23:25:24 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* Function to check that all arguments input are digits only,
-	whitespaces allowed, one '+' or '-' before a digit allowed too. */
+/* Check that all arguments input are digits only, whitespaces 
+	allowed, one '+' or '-' before a digit allowed too. */
 int	parsing_digits(int argc, char **argv)
 {
 	int	i;
@@ -41,16 +41,45 @@ int	parsing_digits(int argc, char **argv)
 	return (1);
 }
 
+static int	is_quoted_arg(int argc, char **argv)
+{
+	int	i;
+	
+	i = 0;
+	while (argv[argc][i])
+	{
+		if (ft_iswhitespace(argv[argc][i]))
+			return (1);
+		i++;
+	}
+	return (0);
+}
+
+/* Create the whole list containging each indivuals 
+	numbers through a split. */
 int	lst_creator(int argc, char **argv)
 {
 	int		i;
+	int		j;
+	char	**split;
 	t_list	*lst;
 	
-	lst = ft_lstnew(argv[1]);
-	i = 2;
+	i = 1;
+	lst = ft_lstnew(argv[i++]);
 	while (i < argc)
 	{
-		ft_lstadd_back(&lst, ft_lstnew(argv[i]));
+		if (is_quoted_arg(i, argv) > 1)
+		{
+			j = 0;
+			split = ft_split(argv[i], ' ');
+			while (split)
+			{
+				ft_lstadd_back(&lst, ft_lstnew(split[j]));
+				j++;
+			}
+		}
+		else
+			ft_lstadd_back(&lst, ft_lstnew(argv[i]));
 		i++;
 	}
 	
@@ -63,20 +92,3 @@ int	lst_creator(int argc, char **argv)
 	
 	return (1);
 }
-
-/*	NOTES	
-
-
-typedef struct s_list
-{
-	struct s_list	*prev;
-	void			*content;
-	struct s_list	*next;
-}					t_list;
-
-
-
-
-
-
-*/

@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/19 22:44:05 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/19 22:52:12 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 	else
 		lst_creator(argc, argv);
-		// generate my lst with a split
+
+		// split args i
 		// atoi each content and filter INT MIN and MAX
 		// check for duplicata
 }
