@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/19 23:50:36 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 00:06:32 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,5 +29,9 @@ int	main(int argc, char **argv)
 	}
 }
 
-		// atoi each content and filter INT MIN and MAX
-		// check for duplicata
+// SPLIT
+	// need to support every whitespaces
+	// not working with the first arg is quoted
+	// need to skip whitespaces only arg
+// atoi each content and filter INT MIN and MAX
+// check for duplicata
