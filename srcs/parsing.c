@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 00:03:44 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 00:10:04 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ static int	is_quoted(int argc, char **argv)
 	i = 0;
 	while (argv[argc][i])
 	{
-		if (ft_iswhitespace(argv[argc][i]))
+		if ((argv[argc][i]) == ' ')
 			return (1);
 		i++;
 	}
