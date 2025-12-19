@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/19 22:13:09 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/19 22:14:14 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,3 +24,14 @@ int	main(int argc, char **argv)
 		// check for duplicata
 	}
 }
+
+/*	NOTES	
+
+
+
+
+
+
+
+
+*/
