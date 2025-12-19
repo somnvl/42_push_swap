@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/18 16:53:13 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/19 19:20:07 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,15 @@ int	digits_only(int argc, char **argv)
 		j = 0;
 		while (argv[i][j])
 		{
-			if (ft_isdigit(argv[i][j]) == 0 && (argv[i][j] != ' '))
+			if (argv[i][j] == '+' || argv[i][j] == '-')
+			{
+				if (j > 0 && ft_isdigit(argv[i][j - 1]))
+					return (1);
+				if (!ft_isdigit(argv[i][j + 1]))
+					return (1);
+			}
+			else if (!ft_isdigit(argv[i][j]) && argv[i][j] != ' ')
 				return (1);
-			// manage + and -
 			j++;
 		}
 		i++;
