@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/19 22:51:49 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/19 23:52:06 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "../libft/libft.h"
 
 int		parsing_digits(int argc, char **argv);
-int		lst_creator(int argc, char **argv);
+char	**ps_split(char const *s, char c);
+t_list	*lst_creator(int argc, char **argv);
 
 #endif

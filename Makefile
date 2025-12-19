@@ -6,7 +6,7 @@
 #    By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2025/12/19 22:17:29 by somenvie         ###   ########.fr        #
+#    Updated: 2025/12/19 23:53:11 by somenvie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ INCLUDE = -I./include
 
 SRCS = srcs/main.c \
 		srcs/parsing.c \
+		srcs/ps_split.c \
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))

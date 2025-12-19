@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/19 23:25:24 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/19 23:56:48 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,9 @@ int	parsing_digits(int argc, char **argv)
 	return (1);
 }
 
-static int	is_quoted_arg(int argc, char **argv)
+/* Check if the recived arg is quoted, meaning it contains multiple 
+	numbers to split */
+static int	is_quoted(int argc, char **argv)
 {
 	int	i;
 	
@@ -57,7 +59,7 @@ static int	is_quoted_arg(int argc, char **argv)
 
 /* Create the whole list containging each indivuals 
 	numbers through a split. */
-int	lst_creator(int argc, char **argv)
+t_list	*lst_creator(int argc, char **argv)
 {
 	int		i;
 	int		j;
@@ -68,11 +70,11 @@ int	lst_creator(int argc, char **argv)
 	lst = ft_lstnew(argv[i++]);
 	while (i < argc)
 	{
-		if (is_quoted_arg(i, argv) > 1)
+		if (is_quoted(i, argv))
 		{
 			j = 0;
-			split = ft_split(argv[i], ' ');
-			while (split)
+			split = ps_split(argv[i], ' ');
+			while (split[j])
 			{
 				ft_lstadd_back(&lst, ft_lstnew(split[j]));
 				j++;
@@ -82,13 +84,5 @@ int	lst_creator(int argc, char **argv)
 			ft_lstadd_back(&lst, ft_lstnew(argv[i]));
 		i++;
 	}
-	
-
-	while (lst)
-	{
-		ft_printf("%s\n", lst->content);
-		lst = lst->next;
-	}
-	
-	return (1);
+	return (lst);
 }
