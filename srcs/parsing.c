@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 00:10:04 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 00:18:59 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	parsing_digits(int argc, char **argv)
 				if (!ft_isdigit(argv[i][j + 1]))
 					return (0);
 			}
-			else if (!ft_isdigit(argv[i][j]) && !ft_iswhitespace(argv[i][j]))
+			else if (!ft_isdigit(argv[i][j]) && (argv[i][j]) != ' ')
 				return (0);
 			j++;
 		}
