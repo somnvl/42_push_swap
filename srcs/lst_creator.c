@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   lst_creator.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 01:48:48 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:22:22 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,47 +14,60 @@
 
 /* Check if the recived arg is quoted, meaning it contains multiple 
 	numbers to split */
-int	check_quoted(int argc, char **argv)
+static int	is_quoted(char *argv)
 {
 	int	i;
-	int	j;
-	
+
 	i = 0;
-	while (i < argc)
+	while (argv[i])
 	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if ((argv[i][j]) == ' ')
-				return (1);
-			j++;
-		}
+		if ((argv[i]) == ' ')
+			return (1);
 		i++;
 	}
 	return (0);
 }
 
-int	ft_atol(const char *nb)
+/* Free the char ** containing double quoted args. */
+void	free_split(char **split)
 {
-	int		i;
-	int		sign;
-	long	res;
-	long	final;
+	int	i;
 
 	i = 0;
-	res = 0;
-	sign = 1;
-	if (nb[i] == '-')
-		sign = -1;
-	if (nb[i] == '-' || nb[i] == '-')
-		i++;
-	while (nb[i])
+	while (split[i])
 	{
-		res = (nb[i] - '0') + res * 10;
+		free(split[i]);
 		i++;
 	}
-	final = res * sign;
-	if (final < INT_MIN || final > INT_MAX)
-		return (0);
-	return (final);
+	free(split);
+}
+
+/* Split every args into a lst. */
+t_list	*lst_creator(int argc, char **argv)
+{
+	int		i;
+	int		j;
+	char	**split;
+	t_list	*lst;
+
+	i = 1;
+	lst = NULL;
+	while (i < argc)
+	{
+		if (is_quoted(argv[i]))
+		{
+			split = ft_split(argv[i], ' ');
+			j = 0;
+			while (split[j])
+			{
+				ft_lstadd_back(&lst, ft_lstnew(ft_strdup(split[j])));
+				j++;
+			}
+			free_split(split);
+		}
+		else
+			ft_lstadd_back(&lst, ft_lstnew(ft_strdup(argv[i])));
+		i++;
+	}
+	return (lst);
 }

@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:15:19 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:21:53 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 static void	free_list(t_list *lst)
 {
 	t_list	*tmp;
-	
+
 	while (lst)
 	{
 		tmp = lst->next;
