@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 01:18:01 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 01:40:26 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,28 +39,6 @@ int	parsing_digits(int argc, char **argv)
 		i++;
 	}
 	return (1);
-}
-
-/* Check if the recived arg is quoted, meaning it contains multiple 
-	numbers to split */
-static int	check_quoted(int argc, char **argv)
-{
-	int	i;
-	int	j;
-	
-	i = 0;
-	while (i < argc)
-	{
-		j = 0;
-		while (argv[i][j])
-		{
-			if ((argv[i][j]) == ' ')
-				return (1);
-			j++;
-		}
-		i++;
-	}
-	return (0);
 }
 
 /* Create the whole list containging each numbers 

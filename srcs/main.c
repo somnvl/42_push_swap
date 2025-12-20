@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 00:41:25 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 01:51:13 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,6 @@ int	main(int argc, char **argv)
 		}
 	}
 }
-
-// should support normal and quoted args at the same time ?
-// is empty "" supported ?
-
-// SPLIT
-	// not working with the first arg is quoted
-	// need to skip empty args
 
 // LST
 	// atoi each content and filter INT MIN and MAX
