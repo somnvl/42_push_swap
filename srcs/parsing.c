@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:25:52 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:26:17 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ t_list	*parsing(int argc, char **argv)
 	if (!valid_char(argc, argv))
 		return (NULL);
 	stack_a = lst_creator(argc, argv);
-	atol_args(stack_a);
+	// atol_args(stack_a);
 	if (!stack_a)
 		return (NULL);
 	return (stack_a);
