@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 19:41:59 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:45:00 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,3 @@ int	main(int argc, char **argv)
 	}
 	free_list(lst);
 }
-
-// LST
-	// create ft that atol each numbers and return if limits reached
-	// check for duplicatamake
-	

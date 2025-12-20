@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 19:42:41 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:44:50 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,7 @@ static int	lst_iter(t_list *lst)
 	}
 	return (1);
 }
+
 // /* Looks for duplicates in the lst. */
 static int	check_duplicates(t_list *lst)
 {
@@ -120,6 +121,6 @@ t_list	*parsing(int argc, char **argv)
 	if (!lst_iter(stack_a))
 		return (NULL);
 	if (check_duplicates(stack_a))
-	    return (NULL);
+		return (NULL);
 	return (stack_a);
 }
