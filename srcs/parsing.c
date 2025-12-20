@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 01:40:26 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 01:57:42 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,21 @@ t_list	*lst_creator(int argc, char **argv)
 		if (argv[i][0] == '\0')
 			return (NULL);
 		i++;
+	}
+	return (lst);
+}
+
+t_list	*parsing(int argc, char **argv)
+{
+	t_list	*lst;
+
+	if (argc == 1 || !parsing_digits(argc, argv))
+		return (NULL);
+	else
+	{
+		lst = lst_creator(argc, argv);
+		if (!lst)
+			return (NULL);
 	}
 	return (lst);
 }
