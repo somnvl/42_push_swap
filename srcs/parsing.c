@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:26:17 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:33:40 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,44 @@ int	valid_char(int argc, char **argv)
 }
 
 /* Atoi with a long every arg in the lst. */
-// static int	ft_atol(const char *nb)
-// {
-// 	int		i;
-// 	int		sign;
-// 	long	res;
-// 	long	final;
+static long	ft_atol(const char *nb)
+{
+	int		i;
+	int		sign;
+	long	res;
+	long	final;
 
-// 	i = 0;
-// 	res = 0;
-// 	sign = 1;
-// 	if (nb[i] == '-')
-// 		sign = -1;
-// 	if (nb[i] == '+' || nb[i] == '-')
-// 		i++;
-// 	while (nb[i])
-// 	{
-// 		res = (nb[i] - '0') + res * 10;
-// 		i++;
-// 	}
-// 	final = res * sign;
-// 	return (final);
-// }
+	i = 0;
+	res = 0;
+	sign = 1;
+	if (nb[i] == '-')
+		sign = -1;
+	if (nb[i] == '+' || nb[i] == '-')
+		i++;
+	while (nb[i])
+	{
+		res = (nb[i] - '0') + res * 10;
+		i++;
+	}
+	final = res * sign;
+	return (final);
+}
+
+static int	lst_iter(t_list *lst)
+{
+	long	nb;
+	t_list	*tmp;
+
+	tmp = lst;
+	while (tmp)
+	{
+		nb = ft_atol(tmp->content);
+		if (nb < INT_MIN || nb > INT_MAX)
+			return (0);
+		tmp = tmp->next;
+	}
+	return (1);
+}
 
 /* Main parsing function that check the validity of the args
 	and put them in a list. */
@@ -78,8 +94,7 @@ t_list	*parsing(int argc, char **argv)
 	if (!valid_char(argc, argv))
 		return (NULL);
 	stack_a = lst_creator(argc, argv);
-	// atol_args(stack_a);
-	if (!stack_a)
+	if (!lst_iter(stack_a))
 		return (NULL);
 	return (stack_a);
 }
