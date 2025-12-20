@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 00:40:38 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 01:18:01 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,49 +43,55 @@ int	parsing_digits(int argc, char **argv)
 
 /* Check if the recived arg is quoted, meaning it contains multiple 
 	numbers to split */
-static int	is_quoted(int argc, char **argv)
+static int	check_quoted(int argc, char **argv)
 {
 	int	i;
+	int	j;
 	
 	i = 0;
-	while (argv[argc][i])
+	while (i < argc)
 	{
-		if ((argv[argc][i]) == ' ')
-			return (1);
+		j = 0;
+		while (argv[i][j])
+		{
+			if ((argv[i][j]) == ' ')
+				return (1);
+			j++;
+		}
 		i++;
 	}
 	return (0);
 }
 
-/* Create the whole list containging each indivuals 
-	numbers through a split of needed. */
+/* Create the whole list containging each numbers 
+	with  a split if needed. */
 t_list	*lst_creator(int argc, char **argv)
 {
 	int		i;
-	int		j;
 	char	**split;
 	t_list	*lst;
 	
-	i = 1;
 	lst = NULL;
+	if (argc == 2)
+	{
+		i = 0;
+		split = ps_split(argv[1], ' ');
+		while (split[i])
+		{
+			ft_lstadd_back(&lst, ft_lstnew(split[i]));
+			i++;
+		}
+		return (lst);
+	}
+	else if (argc > 2 && check_quoted(argc, argv))
+		return (NULL);
+	i = 1;
 	while (i < argc)
 	{
-		if (argv[i][0] =='\0')
+		ft_lstadd_back(&lst, ft_lstnew(argv[i]));
+		if (argv[i][0] == '\0')
 			return (NULL);
-		if (is_quoted(i, argv))
-		{
-			j = 0;
-			split = ps_split(argv[i], ' ');
-			while (split[j])
-			{
-				ft_lstadd_back(&lst, ft_lstnew(split[j]));
-				j++;
-			}
-		}
-		else
-			ft_lstadd_back(&lst, ft_lstnew(argv[i]));
 		i++;
-
 	}
 	return (lst);
 }
