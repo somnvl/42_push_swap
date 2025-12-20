@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:02:13 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:12:29 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,15 @@ static int	is_quoted(char *argv)
 	return (0);
 }
 
+/* Free the char ** containing double quoted args. */
+void free_split(char **split)
+{
+    int i = 0;
+    while (split[i])
+        free(split[i++]);
+    free(split);
+}
+
 /* Split every args into a lst. */
 t_list	*lst_creator(int argc, char **argv)
 {
@@ -73,6 +82,7 @@ t_list	*lst_creator(int argc, char **argv)
 				ft_lstadd_back(&lst, ft_lstnew(ft_strdup(split[j])));
 				j++;
 			}
+			free_split(split);
 		}
 		else
 			ft_lstadd_back(&lst, ft_lstnew(ft_strdup(argv[i])));
