@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 19:08:57 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:42:41 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,32 +79,32 @@ static int	lst_iter(t_list *lst)
 		nbr = ft_atol(tmp->content);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			return (0);
-		// free(tmp->content);
-		// tmp->content = (int *)nbr; 
+		free(tmp->content);
+		tmp->content = (int *)nbr;
 		tmp = tmp->next;
 	}
 	return (1);
 }
 // /* Looks for duplicates in the lst. */
-// static int	check_duplicates(t_list *lst)
-// {
-// 	t_list	*tmp1;
-// 	t_list	*tmp2;
+static int	check_duplicates(t_list *lst)
+{
+	t_list	*tmp1;
+	t_list	*tmp2;
 
-// 	tmp1 = lst;
-// 	tmp2 = lst->next;
-// 	while (tmp1)
-// 	{
-// 		while (tmp2)
-// 		{
-// 			if (tmp1->content == tmp2->content)
-// 				return (1);
-// 			tmp2 = tmp2->next;
-// 		}
-// 		tmp1 = tmp1->next;
-// 	}
-// 	return (0);
-// }
+	tmp1 = lst;
+	tmp2 = lst->next;
+	while (tmp1)
+	{
+		while (tmp2)
+		{
+			if (tmp1->content == tmp2->content)
+				return (1);
+			tmp2 = tmp2->next;
+		}
+		tmp1 = tmp1->next;
+	}
+	return (0);
+}
 
 /* Main parsing function that check the validity of the args
 	and put them in a list. */
@@ -119,7 +119,7 @@ t_list	*parsing(int argc, char **argv)
 	stack_a = lst_creator(argc, argv);
 	if (!lst_iter(stack_a))
 		return (NULL);
-	// if (check_duplicates(stack_a))
-	//     return (NULL);
+	if (check_duplicates(stack_a))
+	    return (NULL);
 	return (stack_a);
 }

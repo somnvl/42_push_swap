@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:24:26 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:41:59 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@ void	free_list(t_list *lst)
 	while (lst)
 	{
 		tmp = lst->next;
-		free(lst->content);
 		free(lst);
 		lst = tmp;
 	}
@@ -38,7 +37,7 @@ int	main(int argc, char **argv)
 		tmp = lst;
 		while (tmp)
 		{
-			ft_printf("%s\n", tmp->content);
+			ft_printf("%d\n", tmp->content);
 			tmp = tmp->next;
 		}
 	}
@@ -47,4 +46,5 @@ int	main(int argc, char **argv)
 
 // LST
 	// create ft that atol each numbers and return if limits reached
-	// check for duplicata
+	// check for duplicatamake
+	
