@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 15:53:36 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:02:42 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ int	valid_char(int argc, char **argv)
 	i = 1;
 	while (i < argc)
 	{
+		if (argv[i][0] == '\0')
+			return (0);
 		j = 0;
 		while (argv[i][j])
 		{
