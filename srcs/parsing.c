@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 01:57:42 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 14:31:25 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_list	*lst_creator(int argc, char **argv)
 	if (argc == 2)
 	{
 		i = 0;
-		split = ps_split(argv[1], ' ');
+		split = ft_split(argv[1], ' ');
 		while (split[i])
 		{
 			ft_lstadd_back(&lst, ft_lstnew(split[i]));
@@ -74,17 +74,16 @@ t_list	*lst_creator(int argc, char **argv)
 	return (lst);
 }
 
+/* Main parsing function that check the validity of the args,
+	and put them in my list*/
 t_list	*parsing(int argc, char **argv)
 {
 	t_list	*lst;
 
 	if (argc == 1 || !parsing_digits(argc, argv))
 		return (NULL);
-	else
-	{
-		lst = lst_creator(argc, argv);
-		if (!lst)
-			return (NULL);
-	}
+	lst = lst_creator(argc, argv);
+	if (!lst)
+		return (NULL);
 	return (lst);
 }
