@@ -6,15 +6,15 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 15:53:36 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 14:31:25 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* Check that all arguments input are digits only, 
-	spaces or optional '+' or '-'. */
-int	valid_char(int argc, char **argv)
+/* Check that all arguments input are digits only, whitespaces 
+	allowed, one '+' or '-' before a digit allowed too. */
+int	parsing_digits(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -41,22 +41,49 @@ int	valid_char(int argc, char **argv)
 	return (1);
 }
 
-/* Main parsing function that check the validity of the args
-	and put them in a list. */
+/* Create the whole list containging each numbers 
+	with  a split if needed. */
+t_list	*lst_creator(int argc, char **argv)
+{
+	int		i;
+	char	**split;
+	t_list	*lst;
+	
+	lst = NULL;
+	if (argc == 2)
+	{
+		i = 0;
+		split = ft_split(argv[1], ' ');
+		while (split[i])
+		{
+			ft_lstadd_back(&lst, ft_lstnew(split[i]));
+			i++;
+		}
+		return (lst);
+	}
+	else if (argc > 2 && check_quoted(argc, argv))
+		return (NULL);
+	i = 1;
+	while (i < argc)
+	{
+		ft_lstadd_back(&lst, ft_lstnew(argv[i]));
+		if (argv[i][0] == '\0')
+			return (NULL);
+		i++;
+	}
+	return (lst);
+}
+
+/* Main parsing function that check the validity of the args,
+	and put them in my list*/
 t_list	*parsing(int argc, char **argv)
 {
-	t_list	*stack_a;
+	t_list	*lst;
 
-	if (argc < 2)
-        return (NULL);
-	if (!valid_char(argc, argv))
-        return (NULL);
-    stack_a = lst_creator(argc, argv);
-    if (!stack_a)
-        return (NULL);
-	else
-		return (stack_a);
-	// atol_args(stack_a);
-    // if (check_duplicates(stack_a))
-    //     return (NULL);
+	if (argc == 1 || !parsing_digits(argc, argv))
+		return (NULL);
+	lst = lst_creator(argc, argv);
+	if (!lst)
+		return (NULL);
+	return (lst);
 }
