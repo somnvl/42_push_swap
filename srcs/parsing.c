@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:40:31 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 18:46:21 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,20 +70,22 @@ static long	ft_atol(const char *nb)
 /* Iterates the whole list with the atol and then the INT_LIMITS. */
 static int	lst_iter(t_list *lst)
 {
-	long	nb;
+	long	nbr;
 	t_list	*tmp;
 
 	tmp = lst;
 	while (tmp)
 	{
-		nb = ft_atol(tmp->content);
-		if (nb < INT_MIN || nb > INT_MAX)
+		nbr = ft_atol(tmp->content);
+		if (nbr < INT_MIN || nbr > INT_MAX)
 			return (0);
+		free(tmp->content);
+		tmp->content = nbr;
 		tmp = tmp->next;
 	}
 	return (1);
 }
-
+// /* Looks for duplicates in the lst. */
 // static int	check_duplicates(t_list *lst)
 // {
 // 	t_list	*tmp1;
@@ -91,11 +93,15 @@ static int	lst_iter(t_list *lst)
 
 // 	tmp1 = lst;
 // 	tmp2 = lst->next;
-// 	while (tmp2)
+// 	while (tmp1)
 // 	{
-// 		if (tmp1->content == tmp2->content)
-// 			return (1);
-// 		tmp2 = tmp2->next;
+// 		while (tmp2)
+// 		{
+// 			if ((tmp1->content) == tmp2->content)
+// 				return (1);
+// 			tmp2 = tmp2->next;
+// 		}
+// 		tmp1 = tmp1->next;
 // 	}
 // 	return (0);
 // }
