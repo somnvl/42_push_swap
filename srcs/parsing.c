@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 18:46:21 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 19:08:57 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,8 @@ static int	lst_iter(t_list *lst)
 		nbr = ft_atol(tmp->content);
 		if (nbr < INT_MIN || nbr > INT_MAX)
 			return (0);
-		free(tmp->content);
-		tmp->content = nbr;
+		// free(tmp->content);
+		// tmp->content = (int *)nbr; 
 		tmp = tmp->next;
 	}
 	return (1);
@@ -97,7 +97,7 @@ static int	lst_iter(t_list *lst)
 // 	{
 // 		while (tmp2)
 // 		{
-// 			if ((tmp1->content) == tmp2->content)
+// 			if (tmp1->content == tmp2->content)
 // 				return (1);
 // 			tmp2 = tmp2->next;
 // 		}
