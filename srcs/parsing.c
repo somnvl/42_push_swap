@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:33:40 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:40:31 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int	valid_char(int argc, char **argv)
 	return (1);
 }
 
-/* Atoi with a long every arg in the lst. */
+/* Atol with a long every arg in the lst. */
 static long	ft_atol(const char *nb)
 {
 	int		i;
@@ -67,6 +67,7 @@ static long	ft_atol(const char *nb)
 	return (final);
 }
 
+/* Iterates the whole list with the atol and then the INT_LIMITS. */
 static int	lst_iter(t_list *lst)
 {
 	long	nb;
@@ -83,6 +84,22 @@ static int	lst_iter(t_list *lst)
 	return (1);
 }
 
+// static int	check_duplicates(t_list *lst)
+// {
+// 	t_list	*tmp1;
+// 	t_list	*tmp2;
+
+// 	tmp1 = lst;
+// 	tmp2 = lst->next;
+// 	while (tmp2)
+// 	{
+// 		if (tmp1->content == tmp2->content)
+// 			return (1);
+// 		tmp2 = tmp2->next;
+// 	}
+// 	return (0);
+// }
+
 /* Main parsing function that check the validity of the args
 	and put them in a list. */
 t_list	*parsing(int argc, char **argv)
@@ -96,7 +113,7 @@ t_list	*parsing(int argc, char **argv)
 	stack_a = lst_creator(argc, argv);
 	if (!lst_iter(stack_a))
 		return (NULL);
-	return (stack_a);
-}
 	// if (check_duplicates(stack_a))
 	//     return (NULL);
+	return (stack_a);
+}
