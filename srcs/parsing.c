@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:22:37 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:24:46 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,28 +44,28 @@ int	valid_char(int argc, char **argv)
 }
 
 /* Atoi with a long every arg in the lst. */
-static int	ft_atol(const char *nb)
-{
-	int		i;
-	int		sign;
-	long	res;
-	long	final;
+// static int	ft_atol(const char *nb)
+// {
+// 	int		i;
+// 	int		sign;
+// 	long	res;
+// 	long	final;
 
-	i = 0;
-	res = 0;
-	sign = 1;
-	if (nb[i] == '-')
-		sign = -1;
-	if (nb[i] == '+' || nb[i] == '-')
-		i++;
-	while (nb[i])
-	{
-		res = (nb[i] - '0') + res * 10;
-		i++;
-	}
-	final = res * sign;
-	return (final);
-}
+// 	i = 0;
+// 	res = 0;
+// 	sign = 1;
+// 	if (nb[i] == '-')
+// 		sign = -1;
+// 	if (nb[i] == '+' || nb[i] == '-')
+// 		i++;
+// 	while (nb[i])
+// 	{
+// 		res = (nb[i] - '0') + res * 10;
+// 		i++;
+// 	}
+// 	final = res * sign;
+// 	return (final);
+// }
 
 /* Main parsing function that check the validity of the args
 	and put them in a list. */
@@ -80,7 +80,7 @@ t_list	*parsing(int argc, char **argv)
 	stack_a = lst_creator(argc, argv);
 	if (!stack_a)
 		return (NULL);
-	atol_args(stack_a);
+	// atol_args(stack_a);
 	return (stack_a);
 }
 	// if (check_duplicates(stack_a))

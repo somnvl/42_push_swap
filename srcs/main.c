@@ -6,13 +6,13 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/20 16:21:53 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/20 16:24:26 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	free_list(t_list *lst)
+void	free_list(t_list *lst)
 {
 	t_list	*tmp;
 
@@ -41,8 +41,8 @@ int	main(int argc, char **argv)
 			ft_printf("%s\n", tmp->content);
 			tmp = tmp->next;
 		}
-		free_list(lst);
 	}
+	free_list(lst);
 }
 
 // LST
