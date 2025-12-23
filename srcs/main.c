@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 18:21:43 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:23:03 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	free_list(t_list *lst)
 		lst = tmp;
 	}
 }
-
+/* PARSING */
 int	main(int argc, char **argv)
 {
 	t_list	*tmp;
@@ -45,6 +45,7 @@ int	main(int argc, char **argv)
 	return (0);
 }
 
+/* OPERATIONS */
 // int	main(int argc, char **argv)
 // {
 // 	t_list	*tmp_a;
