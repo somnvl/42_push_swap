@@ -6,7 +6,7 @@
 #    By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2025/12/23 19:11:27 by somenvie         ###   ########.fr        #
+#    Updated: 2025/12/23 21:40:57 by somenvie         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,10 +22,11 @@ INCLUDE = -I./include
 SRCS = srcs/main.c \
 		srcs/parsing.c \
 		srcs/lst_creator.c \
+		srcs/lst_manager.c \
 		srcs/op_swap.c \
 		srcs/op_push.c \
 		srcs/op_rotate.c \
-		srcs/op_reverse.c \
+# 		srcs/op_reverse.c \
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
