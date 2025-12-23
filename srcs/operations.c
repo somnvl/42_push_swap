@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 15:49:09 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 15:50:12 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,6 @@ void	*rrb(t_list *stack_b)
 /* rra and rrb at the same time. */
 void	*rrr(t_list *stack_a, t_list *stack_b)
 {
-	ra(stack_a);
-	rb(stack_b);
+	rra(stack_a);
+	rrb(stack_b);
 }
