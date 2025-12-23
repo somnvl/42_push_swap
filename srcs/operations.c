@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 16:44:04 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 17:30:20 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	sa(t_list *stack_a)
 	int		*swap;
 	t_list	*tmp;
 
-	if (!(stack_a->next) || !(stack_a->content))
+	if (!stack_a->next || !stack_a->content)
 		return ;
 	tmp = stack_a->next;
 	swap = stack_a->content;
@@ -29,31 +29,47 @@ void	sa(t_list *stack_a)
 
 /* (swap b): Swap the first 2 elements at the top of stack b.
 Do nothing if there is only one element or none. */
-// void	sb(t_list *stack_b)
-// {
+void	sb(t_list *stack_b)
+{
+	int		*swap;
+	t_list	*tmp;
 
-// }
+	if (!stack_b->next || !stack_b->content)
+		return ;
+	tmp = stack_b->next;
+	swap = stack_b->content;
+	stack_b->content = tmp->content;
+	tmp->content = swap;
+}
 
 // /* sa and sb at the same time. */
-// void	ss(t_list *stack_a, t_list *stack_b)
-// {
-// 	sa(stack_a);
-// 	sb(stack_b);
-// }
+void	ss(t_list *stack_a, t_list *stack_b)
+{
+	sa(stack_a);
+	sb(stack_b);
+}
 
 // /* (push a) Take the first element at the top of b and put it at the top of a.
 // Do nothing if b is empty. */
-// void	pa(t_list *stack_a, t_list *stack_b)
-// {
-
-// }
+void	pa(t_list *stack_b, t_list **stack_a)
+{
+	t_list	*tmp;
+	
+	if (!stack_b->content)
+		return ;
+	ft_lstadd_front(stack_a, ft_lstnew(stack_b->content));
+	// rotate b && free last ?
+}
 
 // /* (push b): Take the first element at the top of a and put it at the top of b.
 // Do nothing if a is empty. */
-// void	pb(t_list *stack_a, t_list *stack_b)
-// {
-
-// }
+void	pb(t_list *stack_a, t_list **stack_b)
+{
+	if (!stack_a->content)
+		return ;
+	ft_lstadd_front(stack_b, ft_lstnew(stack_a->content));
+	//  rotate a && free last ?
+}
 
 // /* (rotate a): Shift up all elements of stack a by 1.
 // The first element becomes the last one. */
