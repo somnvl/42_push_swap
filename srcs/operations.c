@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 18:18:26 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:19:26 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,7 @@ void	rr(t_list *stack_a, t_list *stack_b, int print)
 }
 
 // /* (reverse rotate a): Shift down all elements of stack a by 1.
-// The last element becomes the last one. */
+// The last element becomes the first one. */
 void	rra(t_list *stack_a, int print)
 {
 	t_list	*tmp;
@@ -133,7 +133,7 @@ void	rra(t_list *stack_a, int print)
 }
 
 // /* (reverse rotate b): Shift down all elements of stack b by 1.
-// The first element becomes the last one. */
+// The last element becomes the first one. */
 void	rrb(t_list *stack_b, int print)
 {
 	t_list	*tmp;
