@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 16:28:21 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 21:33:42 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ void	free_split(char **split)
 }
 
 /* Split every args into a lst. */
-t_list	*lst_creator(int argc, char **argv)
+t_dlst	*lst_creator(int argc, char **argv)
 {
 	int		i;
 	int		j;
 	char	**split;
-	t_list	*lst;
+	t_dlst	*lst;
 
 	i = 1;
 	lst = NULL;
@@ -60,13 +60,13 @@ t_list	*lst_creator(int argc, char **argv)
 			j = 0;
 			while (split[j])
 			{
-				ft_lstadd_front(&lst, ft_lstnew(ft_strdup(split[j])));
+				db_lstadd_front(&lst, db_lstnew(ft_strdup(split[j])));
 				j++;
 			}
 			free_split(split);
 		}
 		else
-			ft_lstadd_front(&lst, ft_lstnew(ft_strdup(argv[i])));
+			db_lstadd_front(&lst, db_lstnew(ft_strdup(argv[i])));
 		i++;
 	}
 	return (lst);

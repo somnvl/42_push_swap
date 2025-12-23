@@ -6,16 +6,16 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 20:34:58 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 21:26:50 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void swap_stack(t_list *s)
+static void	swap(t_dlst *s)
 {
 	int		*tmp;
-	t_list	*next;
+	t_dlst	*next;
 
 	if (!s || !s->next)
 		return ;
@@ -27,28 +27,28 @@ static void swap_stack(t_list *s)
 
 /* (swap a): Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one element or none. */
-void	sa(t_list *a)
+void	sa(t_dlst *a)
 {
 	if (!a || !a->next)
 		return ;
-	swap_stack(a);
+	swap(a);
 	ft_printf("sa\n");
 }
 
 /* (swap b): Swap the first 2 elements at the top of stack b.
 Do nothing if there is only one element or none. */
-void	sb(t_list *b)
+void	sb(t_dlst *b)
 {
 	if (!b || !b->next)
 		return ;
-	swap_stack(b);
+	swap(b);
 	ft_printf("sb\n");
 }
 
 /* sa and sb at the same time. */
-void	ss(t_list *a, t_list *b)
+void	ss(t_dlst *a, t_dlst *b)
 {
-	swap_stack(a);
-	swap_stack(b);
+	swap(a);
+	swap(b);
 	ft_printf("ss\n");
 }

@@ -6,38 +6,36 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 20:35:47 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 21:26:06 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+static void	push(t_dlst **src, t_dlst **dst)
+{
+	t_dlst	*tmp;
+
+	if (!src || !*src)
+		return ;
+	tmp = *src;
+	*src = tmp->next;
+	tmp->next = *dst;
+	*dst = tmp;
+}
+
 /* (push a) Take the first element at the top of b and put it at the top of a.
 Do nothing if b is empty. */
-void	pa(t_list **a, t_list **b)
+void	pa(t_dlst **a, t_dlst **b)
 {
-	t_list	*tmp;
-
-	if (!a || !*a)
-		return ;
-	tmp = *a;
-	*a = tmp->next;
-	tmp->next = *b;
-	*b = tmp;
+	push(b, a);
 	ft_printf("pa\n");
 }
 
 /* (push b): Take the first element at the top of a and put it at the top of b.
 Do nothing if a is empty. */
-void	pb(t_list **a, t_list **b)
+void	pb(t_dlst **a, t_dlst **b)
 {
-	t_list	*tmp;
-
-	if (!b || !*b)
-		return ;
-	tmp = *b;
-	*b = tmp->next;
-	tmp->next = *a;
-	*a = tmp;
+	push(a, b);
 	ft_printf("pb\n");
 }
