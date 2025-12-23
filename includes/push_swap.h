@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 16:04:39 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:07:57 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ typedef struct s_lst
 /* PARSING */
 t_lst	*parsing(int argc, char **argv);
 t_lst	*lst_creator(int argc, char **argv);
-t_lst	*ft_lstnew_ps(void *content);
-void	ft_lstadd_back_ps(t_lst **lst, t_lst *new);
-t_lst	*ft_lstlast_ps(t_lst *lst);
+t_lst	*ft_lstnew_db(void *content);
+void	ft_lstadd_back_db(t_lst **lst, t_lst *new);
+t_lst	*ft_lstlast_db(t_lst *lst);
 
 /* OPERATIONS */
 void	*sa(t_lst *stack_a);
