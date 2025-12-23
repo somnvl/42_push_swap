@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 17:24:42 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:11:05 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,7 @@ int	main(int argc, char **argv)
 		free_list(stack_a);
 		return (1);
 	}
-	pb(stack_a, &stack_b);
-	pa(stack_b, &stack_a);
+
 	tmp_a = stack_a;
 	tmp_b = stack_b;
 	while (tmp_a || tmp_b->next)
