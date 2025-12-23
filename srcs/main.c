@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 20:31:10 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 20:40:07 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,7 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 	else
 	{
-		pb(&b, &a);
-		pb(&b, &a);
-		ss(a, b);
+		ra(a);
 		tmpa = a;
 		tmpb = b;
 		ft_printf("-----\n");

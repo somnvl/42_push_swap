@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 20:20:05 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 20:34:58 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	sb(t_list *b)
 	ft_printf("sb\n");
 }
 
-// /* sa and sb at the same time. */
+/* sa and sb at the same time. */
 void	ss(t_list *a, t_list *b)
 {
 	swap_stack(a);

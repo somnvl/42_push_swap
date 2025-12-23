@@ -6,14 +6,14 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 20:16:52 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 20:35:47 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// /* (push a) Take the first element at the top of b and put it at the top of a.
-// Do nothing if b is empty. */
+/* (push a) Take the first element at the top of b and put it at the top of a.
+Do nothing if b is empty. */
 void	pa(t_list **a, t_list **b)
 {
 	t_list	*tmp;
@@ -27,8 +27,8 @@ void	pa(t_list **a, t_list **b)
 	ft_printf("pa\n");
 }
 
-// /* (push b): Take the first element at the top of a and put it at the top of b.
-// Do nothing if a is empty. */
+/* (push b): Take the first element at the top of a and put it at the top of b.
+Do nothing if a is empty. */
 void	pb(t_list **a, t_list **b)
 {
 	t_list	*tmp;
