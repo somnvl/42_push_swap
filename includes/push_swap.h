@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 15:53:29 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:04:39 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,21 +15,32 @@
 
 # include "../libft/libft.h"
 
+typedef struct s_lst
+{
+	struct s_lst	*prev;
+	void			*content;
+	struct s_lst	*next;
+}					t_lst;
+
+
 /* PARSING */
-t_list	*parsing(int argc, char **argv);
-t_list	*lst_creator(int argc, char **argv);
+t_lst	*parsing(int argc, char **argv);
+t_lst	*lst_creator(int argc, char **argv);
+t_lst	*ft_lstnew_ps(void *content);
+void	ft_lstadd_back_ps(t_lst **lst, t_lst *new);
+t_lst	*ft_lstlast_ps(t_lst *lst);
 
 /* OPERATIONS */
-void	*sa(t_list *stack_a);
-void	*sb(t_list *stack_b);
-void	*ss(t_list *stack_a, t_list *stack_b);
-void	*pa(t_list *stack_a, t_list *stack_b);
-void	*pb(t_list *stack_a, t_list *stack_b);
-void	*ra(t_list *stack_a);
-void	*rb(t_list *stack_b);
-void	*rr(t_list *stack_a, t_list *stack_b);
-void	*rra(t_list *stack_a);
-void	*rrb(t_list *stack_b);
-void	*rrr(t_list *stack_a, t_list *stack_b);
+void	*sa(t_lst *stack_a);
+void	*sb(t_lst *stack_b);
+void	*ss(t_lst *stack_a, t_lst *stack_b);
+void	*pa(t_lst *stack_a, t_lst *stack_b);
+void	*pb(t_lst *stack_a, t_lst *stack_b);
+void	*ra(t_lst *stack_a);
+void	*rb(t_lst *stack_b);
+void	*rr(t_lst *stack_a, t_lst *stack_b);
+void	*rra(t_lst *stack_a);
+void	*rrb(t_lst *stack_b);
+void	*rrr(t_lst *stack_a, t_lst *stack_b);
 
 #endif
