@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 15:56:09 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:18:38 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,10 +68,10 @@ static long	ft_atol(const char *nb)
 }
 
 /* Iterates the whole list with the atol and then the INT_LIMITS. */
-static int	lst_iter(t_lst *lst)
+static int	lst_iter(t_list *lst)
 {
 	long	nbr;
-	t_lst	*tmp;
+	t_list	*tmp;
 
 	tmp = lst;
 	while (tmp)
@@ -87,10 +87,10 @@ static int	lst_iter(t_lst *lst)
 }
 
 // /* Looks for duplicates in the lst. */
-static int	check_duplicates(t_lst *lst)
+static int	check_duplicates(t_list *lst)
 {
-	t_lst	*tmp1;
-	t_lst	*tmp2;
+	t_list	*tmp1;
+	t_list	*tmp2;
 
 	tmp1 = lst;
 	tmp2 = lst->next;
@@ -109,9 +109,9 @@ static int	check_duplicates(t_lst *lst)
 
 /* Main parsing function that check the validity of the args
 	and put them in a list. */
-t_lst	*parsing(int argc, char **argv)
+t_list	*parsing(int argc, char **argv)
 {
-	t_lst	*stack_a;
+	t_list	*stack_a;
 
 	if (argc < 2)
 		return (NULL);

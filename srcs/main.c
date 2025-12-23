@@ -6,15 +6,15 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 15:55:15 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:18:21 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	free_list(t_lst *lst)
+void	free_list(t_list *lst)
 {
-	t_lst	*tmp;
+	t_list	*tmp;
 
 	while (lst)
 	{
@@ -26,8 +26,8 @@ void	free_list(t_lst *lst)
 
 int	main(int argc, char **argv)
 {
-	t_lst	*tmp;
-	t_lst	*stack_a;
+	t_list	*tmp;
+	t_list	*stack_a;
 	// t_lst	*stack_b;
 
 	stack_a = parsing(argc, argv);
