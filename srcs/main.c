@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 16:18:21 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:39:32 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,16 +32,18 @@ int	main(int argc, char **argv)
 
 	stack_a = parsing(argc, argv);
 	if (!stack_a)
-		ft_printf("Error\n");
-	else
 	{
-		tmp = stack_a;
-		while (tmp)
-		{
-			ft_printf("%d\n", tmp->content);
-			tmp = tmp->next;
-		}
+		ft_printf("Error\n");
+		return (1);
+	}
+	sa(stack_a);
+	tmp = stack_a;
+	while (tmp)
+	{
+		ft_printf("%d\n", tmp->content);
+		tmp = tmp->next;
 	}
 	free_list(stack_a);
 	// free_list(stack_b);
+	return (0);
 }
