@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 15:51:05 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 15:53:29 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,16 @@ t_list	*parsing(int argc, char **argv);
 t_list	*lst_creator(int argc, char **argv);
 
 /* OPERATIONS */
-
-/* ALGO */
+void	*sa(t_list *stack_a);
+void	*sb(t_list *stack_b);
+void	*ss(t_list *stack_a, t_list *stack_b);
+void	*pa(t_list *stack_a, t_list *stack_b);
+void	*pb(t_list *stack_a, t_list *stack_b);
+void	*ra(t_list *stack_a);
+void	*rb(t_list *stack_b);
+void	*rr(t_list *stack_a, t_list *stack_b);
+void	*rra(t_list *stack_a);
+void	*rrb(t_list *stack_b);
+void	*rrr(t_list *stack_a, t_list *stack_b);
 
 #endif
