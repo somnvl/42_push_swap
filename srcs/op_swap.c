@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 19:09:56 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 20:20:05 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 static void swap_stack(t_list *s)
 {
-	int		tmp;
+	int		*tmp;
 	t_list	*next;
 
 	if (!s || !s->next)

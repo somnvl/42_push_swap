@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 18:52:15 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 20:31:10 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,54 +27,35 @@ void	free_list(t_list *lst)
 /* OPERATIONS */
 int	main(int argc, char **argv)
 {
-	t_list	*tmp_a;
-	t_list	*tmp_b;
-	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	*a;
+	t_list	*b;
+	t_list	*tmpa;
+	t_list	*tmpb;
 
-	stack_a = parsing(argc, argv);
-	stack_b = NULL;
-	if (!stack_a)
+	a = parsing(argc, argv);
+	b = NULL;
+	if (!a)
 		ft_printf("Error\n");
 	else
 	{
-		tmp_a = stack_a;
-		tmp_b = stack_b;
-		pb(&stack_b, &stack_a, 0);
-		while (tmp_a)
+		pb(&b, &a);
+		pb(&b, &a);
+		ss(a, b);
+		tmpa = a;
+		tmpb = b;
+		ft_printf("-----\n");
+		while (tmpa || tmpb)
 		{
-			if (tmp_b)
+			if (tmpb)
 			{
-				ft_printf("%d  %d\n", tmp_a->content, tmp_b->content);
-				tmp_b = tmp_b->next;
+				ft_printf("%d   %d\n", tmpa->content, tmpb->content);
+				tmpb = tmpb->next;
 			}
 			else
-				ft_printf("%d    \n", tmp_a->content);
-			tmp_a = tmp_a->next;
+				ft_printf("%d   -\n", tmpa->content);
+			tmpa = tmpa->next;
 		}
-		free_list(stack_a);
-		free_list(stack_b);
+		free_list(a);
+		free_list(b);
 	}
 }
-
-/* PARSING */
-// int	main(int argc, char **argv)
-// {
-// 	t_list	*tmp;
-// 	t_list	*stack_a;
-
-// 	stack_a = parsing(argc, argv);
-// 	if (!stack_a)
-// 		ft_printf("Error\n");
-// 	else
-// 	{
-// 		tmp = stack_a;
-// 		while (tmp)
-// 		{
-// 			ft_printf("%d\n", tmp->content);
-// 			tmp = tmp->next;
-// 		}
-// 	}
-// 	free_list(stack_a);
-// 	return (0);
-// }
