@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:34:27 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 21:53:41 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_dlst
 void	free_list(t_dlst *lst);
 void	db_lstadd_front(t_dlst **lst, t_dlst *new);
 t_dlst	*db_lstnew(void *content);
+t_dlst	*db_lstlast(t_dlst *lst);
 
 /* PARSING */
 t_dlst	*parsing(int argc, char **argv);

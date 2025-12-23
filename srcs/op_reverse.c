@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:24:56 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 21:54:11 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,19 @@
 
 static void	reverse_rotate(t_dlst *s)
 {
+	t_dlst	*tmp;
+	int		*last;
 
+	if (!s || !s->next)
+		return ;
+	tmp = db_lstlast(s);
+	last = tmp->content;
+	while (tmp->prev)
+	{
+		tmp->content = tmp->prev->content;
+		tmp = tmp->prev;
+	}
+	tmp->content = last;
 }
 
 // /* (reverse rotate a): Shift down all elements of stack a by 1.

@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:26:06 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 21:44:19 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ static void	push(t_dlst **src, t_dlst **dst)
 		return ;
 	tmp = *src;
 	*src = tmp->next;
+	if (*src)
+		(*src)->prev = NULL;
 	tmp->next = *dst;
+	if (*dst)
+		(*dst)->prev = NULL;
+	tmp->prev = NULL;
 	*dst = tmp;
 }
 
