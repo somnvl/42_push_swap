@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 17:57:37 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:32:30 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+
+/* MAIN */
+void	free_list(t_list *lst);
 
 /* PARSING */
 t_list	*parsing(int argc, char **argv);

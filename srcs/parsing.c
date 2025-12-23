@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 16:18:38 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 18:31:53 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,8 +119,8 @@ t_list	*parsing(int argc, char **argv)
 		return (NULL);
 	stack_a = lst_creator(argc, argv);
 	if (!lst_iter(stack_a))
-		return (NULL);
+		return (free_list(stack_a), NULL);
 	if (check_duplicates(stack_a))
-		return (NULL);
+		return (free_list(stack_a), NULL);
 	return (stack_a);
 }
