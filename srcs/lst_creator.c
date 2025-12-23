@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 16:19:23 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:28:21 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ t_list	*lst_creator(int argc, char **argv)
 			j = 0;
 			while (split[j])
 			{
-				ft_lstadd_back(&lst, ft_lstnew(ft_strdup(split[j])));
+				ft_lstadd_front(&lst, ft_lstnew(ft_strdup(split[j])));
 				j++;
 			}
 			free_split(split);
 		}
 		else
-			ft_lstadd_back(&lst, ft_lstnew(ft_strdup(argv[i])));
+			ft_lstadd_front(&lst, ft_lstnew(ft_strdup(argv[i])));
 		i++;
 	}
 	return (lst);

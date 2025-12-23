@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 16:17:42 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/23 16:25:41 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,11 @@
 Do nothing if there is only one element or none. */
 void	*sa(t_list *stack_a)
 {
+	t_list	*tmp;
 
+	tmp = stack_a->next;
+	if (!(stack_a->content)|| !(tmp->content))
+		return ;
 }
 
 /* (swap b): Swap the first 2 elements at the top of stack b.
