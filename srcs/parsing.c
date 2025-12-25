@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:27:17 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/25 18:48:05 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /* Check that all arguments input are digits only, 
 	spaces or optional '+' or '-'. */
-int	valid_char(int argc, char **argv)
+static int	valid_char(int argc, char **argv)
 {
 	int	i;
 	int	j;
@@ -43,49 +43,6 @@ int	valid_char(int argc, char **argv)
 	return (1);
 }
 
-/* Atol with a long every arg in the lst. */
-static long	ft_atol(const char *nb)
-{
-	int		i;
-	int		sign;
-	long	res;
-	long	final;
-
-	i = 0;
-	res = 0;
-	sign = 1;
-	if (nb[i] == '-')
-		sign = -1;
-	if (nb[i] == '+' || nb[i] == '-')
-		i++;
-	while (nb[i])
-	{
-		res = (nb[i] - '0') + res * 10;
-		i++;
-	}
-	final = res * sign;
-	return (final);
-}
-
-/* Iterates the whole list with the atol and then the INT_LIMITS. */
-static int	lst_iter(t_dlst *lst)
-{
-	long	nbr;
-	t_dlst	*tmp;
-
-	tmp = lst;
-	while (tmp)
-	{
-		nbr = ft_atol(tmp->content);
-		if (nbr < INT_MIN || nbr > INT_MAX)
-			return (0);
-		free(tmp->content);
-		tmp->content = (int *)nbr;
-		tmp = tmp->next;
-	}
-	return (1);
-}
-
 // /* Looks for duplicates in the lst. */
 static int	check_duplicates(t_dlst *lst)
 {
@@ -93,9 +50,9 @@ static int	check_duplicates(t_dlst *lst)
 	t_dlst	*tmp2;
 
 	tmp1 = lst;
-	tmp2 = lst->next;
 	while (tmp1)
 	{
+		tmp2 = tmp1->next;
 		while (tmp2)
 		{
 			if (tmp1->content == tmp2->content)
@@ -118,7 +75,7 @@ t_dlst	*parsing(int argc, char **argv)
 	if (!valid_char(argc, argv))
 		return (NULL);
 	stack_a = lst_creator(argc, argv);
-	if (!lst_iter(stack_a))
+	if (!stack_a)
 		return (free_list(stack_a), NULL);
 	if (check_duplicates(stack_a))
 		return (free_list(stack_a), NULL);

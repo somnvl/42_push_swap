@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 21:31:03 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:49:35 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/25 19:08:49 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	db_lstadd_front(t_dlst **lst, t_dlst *new)
 	*lst = new;
 }
 
-t_dlst	*db_lstnew(void *content)
+t_dlst	*db_lstnew(int content)
 {
 	t_dlst	*lst;
 
@@ -35,6 +35,7 @@ t_dlst	*db_lstnew(void *content)
 	lst->next = NULL;
 	return (lst);
 }
+
 t_dlst	*db_lstlast(t_dlst *lst)
 {
 	t_dlst	*tmp;

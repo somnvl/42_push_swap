@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:25:12 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/25 18:38:58 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	rotate(t_dlst *s)
 {
+	int		first;
 	t_dlst	*tmp;
-	int		*first;
 
 	if (!s || !s->next)
 		return ;

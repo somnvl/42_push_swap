@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:33:42 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/25 19:08:37 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,42 @@ void	free_split(char **split)
 	free(split);
 }
 
+/* Atol with a long every arg in the lst. */
+static long	ft_atol(const char *nb)
+{
+	int		i;
+	int		sign;
+	long	res;
+	long	final;
+
+	i = 0;
+	res = 0;
+	sign = 1;
+	if (nb[i] == '-')
+		sign = -1;
+	if (nb[i] == '+' || nb[i] == '-')
+		i++;
+	while (nb[i])
+	{
+		res = (nb[i] - '0') + res * 10;
+		i++;
+	}
+	final = res * sign;
+	return (final);
+}
+
+/* Atol the arg and put it in the lst. */
+static int	lst_nbr(t_dlst **lst, char *str)
+{
+	long	nbr;
+
+	nbr = ft_atol(str);
+	if (nbr < INT_MIN || nbr > INT_MAX)
+		return (0);
+	db_lstadd_front(lst, db_lstnew((int)nbr));
+	return (1);
+}
+
 /* Split every args into a lst. */
 t_dlst	*lst_creator(int argc, char **argv)
 {
@@ -50,23 +86,23 @@ t_dlst	*lst_creator(int argc, char **argv)
 	char	**split;
 	t_dlst	*lst;
 
-	i = 1;
 	lst = NULL;
+	i = 1;
 	while (i < argc)
 	{
 		if (is_quoted(argv[i]))
 		{
 			split = ft_split(argv[i], ' ');
+			if (!split)
+				return (NULL);
 			j = 0;
 			while (split[j])
-			{
-				db_lstadd_front(&lst, db_lstnew(ft_strdup(split[j])));
-				j++;
-			}
+				if (!lst_nbr(&lst, split[j++]))
+					return (free_split(split), free_list(lst), NULL);
 			free_split(split);
 		}
-		else
-			db_lstadd_front(&lst, db_lstnew(ft_strdup(argv[i])));
+		else if (!lst_nbr(&lst, argv[i]))
+			return (free_list(lst), NULL);
 		i++;
 	}
 	return (lst);
