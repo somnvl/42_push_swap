@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/25 18:38:37 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/25 19:11:20 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	main(int argc, char **argv)
 				tmpb = tmpb->next;
 			}
 			else
-				ft_printf("%d   -\n", tmpa->content);
+				ft_printf("%d    \n", tmpa->content);
 			tmpa = tmpa->next;
 		}
 		free_list(a);

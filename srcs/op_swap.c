@@ -6,7 +6,7 @@
 /*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/25 18:38:08 by somenvie         ###   ########.fr       */
+/*   Updated: 2025/12/25 19:21:43 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,18 @@
 static void	swap(t_dlst *s)
 {
 	int		tmp;
-	t_dlst	*next;
 
 	if (!s || !s->next)
 		return ;
-	next = s->next;
 	tmp = s->content;
-	s->content = next->content;
-	next->content = tmp;
+	s->content = s->next->content;
+	s->next->content = tmp;
 }
 
 /* (swap a): Swap the first 2 elements at the top of stack a.
 Do nothing if there is only one element or none. */
 void	sa(t_dlst *a)
 {
-	if (!a || !a->next)
-		return ;
 	swap(a);
 	ft_printf("sa\n");
 }
@@ -39,8 +35,6 @@ void	sa(t_dlst *a)
 Do nothing if there is only one element or none. */
 void	sb(t_dlst *b)
 {
-	if (!b || !b->next)
-		return ;
 	swap(b);
 	ft_printf("sb\n");
 }
