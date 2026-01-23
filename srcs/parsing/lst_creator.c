@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   lst_creator.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/25 19:08:37 by somenvie         ###   ########.fr       */
+/*   Updated: 2026/01/23 19:45:50 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 /* Check if the recived arg is quoted, meaning it contains multiple 
 	numbers to split */

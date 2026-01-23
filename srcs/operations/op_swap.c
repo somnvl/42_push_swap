@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   op_swap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/25 19:21:43 by somenvie         ###   ########.fr       */
+/*   Updated: 2026/01/23 21:18:39 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 /*
 Swap the first two nodes of a stack by relinking pointers.
@@ -20,27 +20,22 @@ No node content is modified.
 */
 static void	swap(t_dlst **s)
 {
-   	t_dlst *first;
-    t_dlst *second;
-    t_dlst *third;
+	t_dlst	*first;
+	t_dlst	*second;
+	t_dlst	*third;
 
-    if (!s || !*s || !(*s)->next)
-        return;
-
-    first = *s;
-    second = first->next;
-    third = second->next;
-
-    second->prev = NULL;
-    second->next = first;
-
-    first->prev = second;
-    first->next = third;
-
-    if (third)
-        third->prev = first;
-
-    *s = second;
+	if (!s || !*s || !(*s)->next)
+		return ;
+	first = *s;
+	second = first->next;
+	third = second->next;
+	second->prev = NULL;
+	second->next = first;
+	first->prev = second;
+	first->next = third;
+	if (third)
+		third->prev = first;
+	*s = second;
 }
 
 /*

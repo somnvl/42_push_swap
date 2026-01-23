@@ -18,12 +18,34 @@ void	free_list(t_dlst *lst)
 
 	while (lst)
 	{
-		tmp = lst->next; 
+		tmp = lst->next;
 		free(lst);
 		lst = tmp;
 	}
 }
 
+int	main(int argc, char **argv)
+{
+	t_dlst	*a;
+	t_dlst	*b;
+
+	a = parsing(argc, argv);
+	b = NULL;
+	if (!a)
+		return (free_list(a), free_list(b), ft_printf("Error\n"), 1);
+	normalize(a);
+	if (issorted(a))
+		return (free_list(a), free_list(b), 0);
+	else if (argc <= 6)
+		low_sort(argc, &a, &b);
+	else
+		turkish_algo(a, b);
+	free_list(a);
+	free_list(b);
+	return (0);
+}
+
+/*
 int	main(int argc, char **argv)
 {
 	t_dlst	*a;
@@ -38,6 +60,8 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 	else
 	{
+		normalize(a);
+
 		tmpa = a;
 		tmpb = b;
 
@@ -60,4 +84,4 @@ int	main(int argc, char **argv)
 		free_list(b);
 	}
 }
- 
+*/

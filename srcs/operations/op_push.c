@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   op_push.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/23 21:44:19 by somenvie         ###   ########.fr       */
+/*   Updated: 2026/01/23 21:15:31 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 /*
 Swap the first two nodes of a stack by relinking pointers.
@@ -24,16 +24,13 @@ static void	push(t_dlst **src, t_dlst **dst)
 	if (!src || !*src)
 		return ;
 	tmp = *src;
-
 	*src = tmp->next;
 	if (*src)
 		(*src)->prev = NULL;
-
 	tmp->next = *dst;
 	if (*dst)
 		(*dst)->prev = tmp;
 	tmp->prev = NULL;
-
 	*dst = tmp;
 }
 

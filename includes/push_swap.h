@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/25 19:11:38 by somenvie         ###   ########.fr       */
+/*   Updated: 2026/01/23 21:14:13 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,5 +44,8 @@ void	rr(t_dlst **a, t_dlst **b);
 void	rra(t_dlst **a);
 void	rrb(t_dlst **b);
 void	rrr(t_dlst **a, t_dlst **b);
+
+/* EARLY EXIT */
+void	low_sort(int argc, t_dlst **a, t_dlst **b);
 
 #endif

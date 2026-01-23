@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   op_reverse.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/25 18:39:06 by somenvie         ###   ########.fr       */
+/*   Updated: 2026/01/23 21:17:15 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/push_swap.h"
+#include "push_swap.h"
 
 /*
 Reverse rotate a stack by moving the last node to the front.
@@ -21,20 +21,15 @@ static void	reverse_rotate(t_dlst **s)
 	t_dlst	*before_last;
 
 	if (!s || !*s || !(*s)->next)
-		return;
-
+		return ;
 	last = db_lstlast(*s);
 	before_last = last->prev;
-
 	before_last->next = NULL;
-
 	last->prev = NULL;
 	last->next = *s;
 	(*s)->prev = last;
-
 	*s = last;
 }
-
 
 // /* (reverse rotate a): Shift down all elements of stack a by 1.
 // The last element becomes the first one. */
