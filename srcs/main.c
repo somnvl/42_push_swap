@@ -33,23 +33,27 @@ int	main(int argc, char **argv)
 
 	a = parsing(argc, argv);
 	b = NULL;
+
 	if (!a)
 		ft_printf("Error\n");
 	else
 	{
-		pa(&b,&a);
+		ft_printf("  OP \n");
+		ft_printf("------\n");
+
+		sa(&a);
 
 		tmpa = a;
 		tmpb = b;
 
-		ft_printf("a      b \n");
-		ft_printf("--------\n");
+		ft_printf("\nSTACKS \n");
+		ft_printf("------\n");
 
 		while (tmpa || tmpb)
 		{
 			if (tmpb)
 			{
-				ft_printf("%d      %d\n", tmpa->content, tmpb->content);
+				ft_printf("%d    %d\n", tmpa->content, tmpb->content);
 				tmpb = tmpb->next;
 			}
 			else

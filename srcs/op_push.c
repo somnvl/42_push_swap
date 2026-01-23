@@ -29,16 +29,20 @@ static void	push(t_dlst **src, t_dlst **dst)
 	*dst = tmp;
 }
 
-/* (push a) Take the first element at the top of b and put it at the top of a.
-Do nothing if b is empty. */
+/*
+(push a) Take the first element at the top of b and put it at the top of a.
+Do nothing if b is empty.
+*/
 void	pa(t_dlst **a, t_dlst **b)
 {
 	push(b, a);
 	ft_printf("pa\n");
 }
 
-/* (push b): Take the first element at the top of a and put it at the top of b.
-Do nothing if a is empty. */
+/*
+(push b): Take the first element at the top of a and put it at the top of b.
+Do nothing if a is empty.
+*/
 void	pb(t_dlst **a, t_dlst **b)
 {
 	push(a, b);
