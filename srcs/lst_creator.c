@@ -6,11 +6,11 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 19:45:50 by so               ###   ########.fr       */
+/*   Updated: 2026/01/23 21:59:06 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /* Check if the recived arg is quoted, meaning it contains multiple 
 	numbers to split */
@@ -74,7 +74,7 @@ static int	lst_nbr(t_dlst **lst, char *str)
 	nbr = ft_atol(str);
 	if (nbr < INT_MIN || nbr > INT_MAX)
 		return (0);
-	db_lstadd_front(lst, db_lstnew((int)nbr));
+	db_lstadd_back(lst, db_lstnew((int)nbr));
 	return (1);
 }
 

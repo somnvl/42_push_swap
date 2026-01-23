@@ -6,11 +6,11 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:17:32 by so               ###   ########.fr       */
+/*   Updated: 2026/01/23 21:59:21 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /*
 Rotate a stack by moving the first node to the end of the list.

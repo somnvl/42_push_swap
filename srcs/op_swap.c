@@ -6,11 +6,11 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:18:39 by so               ###   ########.fr       */
+/*   Updated: 2026/01/23 21:59:23 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
 /*
 Swap the first two nodes of a stack by relinking pointers.

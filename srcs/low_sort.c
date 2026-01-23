@@ -1,26 +1,43 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   earlyexit.c                                        :+:      :+:    :+:   */
+/*   low_sort.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:20:32 by so               ###   ########.fr       */
+/*   Updated: 2026/01/23 22:13:41 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "../includes/push_swap.h"
 
-void	low_sort(int argc, t_dlst **a, t_dlst **b)
+static void	sort_two(t_dlst **a, t_dlst **b)
 {
-	int	size;
+	
+}
 
-	size = argc - 1;
+static void	sort_three(t_dlst **a, t_dlst **b)
+{
+	
+}
+
+static void	sort_four(t_dlst **a, t_dlst **b)
+{
+	
+}
+
+static void	sort_five(t_dlst **a, t_dlst **b)
+{
+	
+}
+
+void	low_sort(int size, t_dlst **a, t_dlst **b)
+{
 	if (size == 2)
-		sort_two(a);
+		sort_two(a, b);
 	else if (size == 3)
-		sort_three(a);
+		sort_three(a, b);
 	else if (size == 4)
 		sort_four(a, b);
 	else if (size == 5)

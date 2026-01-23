@@ -24,64 +24,44 @@ void	free_list(t_dlst *lst)
 	}
 }
 
+static int	is_sorted(t_dlst *a)
+{
+    t_dlst  *current;
+
+    if (!a || !a->next)
+        return (1);
+    current = a;
+    while (current->next)
+    {
+        if (current->content > current->next->content)
+            return (0);
+        current = current->next;
+    }
+    return (1);
+}
+
 int	main(int argc, char **argv)
 {
 	t_dlst	*a;
 	t_dlst	*b;
+	// int		size;
 
 	a = parsing(argc, argv);
 	b = NULL;
+
 	if (!a)
 		return (free_list(a), free_list(b), ft_printf("Error\n"), 1);
-	normalize(a);
-	if (issorted(a))
+
+	// normalize(a);
+
+	if (is_sorted(a))
 		return (free_list(a), free_list(b), 0);
-	else if (argc <= 6)
-		low_sort(argc, &a, &b);
-	else
-		turkish_algo(a, b);
-	free_list(a);
-	free_list(b);
-	return (0);
+	ft_printf("		TO SORT\n");
+	// size = db_lstsize(a);
+	// if (size <= 5)
+	// 	low_sort(size, &a, &b);
+	// else
+	// 	turkish_algo(a, b);
+
+	return (free_list(a), free_list(b), 0);
 }
-
-/*
-int	main(int argc, char **argv)
-{
-	t_dlst	*a;
-	t_dlst	*b;
-	t_dlst	*tmpa;
-	t_dlst	*tmpb;
-
-	a = parsing(argc, argv);
-	b = NULL;
-
-	if (!a)
-		ft_printf("Error\n");
-	else
-	{
-		normalize(a);
-
-		tmpa = a;
-		tmpb = b;
-
-		ft_printf("\nSTACKS \n");
-		ft_printf("------\n");
-
-		while (tmpa || tmpb)
-		{
-			if (tmpb)
-			{
-				ft_printf("%d    %d\n", tmpa->content, tmpb->content);
-				tmpb = tmpb->next;
-			}
-			else
-				ft_printf("%d    \n", tmpa->content);
-			tmpa = tmpa->next;
-		}
-
-		free_list(a);
-		free_list(b);
-	}
-}
-*/
