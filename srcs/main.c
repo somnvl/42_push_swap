@@ -38,11 +38,6 @@ int	main(int argc, char **argv)
 		ft_printf("Error\n");
 	else
 	{
-		ft_printf("\n  OP \n");
-		ft_printf("------\n");
-
-		rra(&a);
-
 		tmpa = a;
 		tmpb = b;
 
