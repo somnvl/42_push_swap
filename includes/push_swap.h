@@ -38,11 +38,11 @@ void	sb(t_dlst **b);
 void	ss(t_dlst **a, t_dlst **b);
 void	pa(t_dlst **a, t_dlst **b);
 void	pb(t_dlst **a, t_dlst **b);
-// void	ra(t_dlst *a);
-// void	rb(t_dlst *b);
-// void	rr(t_dlst *a, t_dlst *b);
-// void	rra(t_dlst *a);
-// void	rrb(t_dlst *b);
-// void	rrr(t_dlst *a, t_dlst *b);
+void	ra(t_dlst **a);
+void	rb(t_dlst **b);
+void	rr(t_dlst **a, t_dlst **b);
+void	rra(t_dlst **a);
+void	rrb(t_dlst **b);
+void	rrr(t_dlst **a, t_dlst **b);
 
 #endif

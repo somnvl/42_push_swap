@@ -12,6 +12,11 @@
 
 #include "../includes/push_swap.h"
 
+/*
+Swap the first two nodes of a stack by relinking pointers.
+The head becomes the second node, the second becomes the new head,
+and the rest of the list remains unchanged.
+*/
 static void	push(t_dlst **src, t_dlst **dst)
 {
 	t_dlst	*tmp;
@@ -19,13 +24,16 @@ static void	push(t_dlst **src, t_dlst **dst)
 	if (!src || !*src)
 		return ;
 	tmp = *src;
+
 	*src = tmp->next;
 	if (*src)
 		(*src)->prev = NULL;
+
 	tmp->next = *dst;
 	if (*dst)
-		(*dst)->prev = NULL;
+		(*dst)->prev = tmp;
 	tmp->prev = NULL;
+
 	*dst = tmp;
 }
 

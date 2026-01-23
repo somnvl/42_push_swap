@@ -12,26 +12,33 @@
 
 #include "../includes/push_swap.h"
 
-static void	reverse_rotate(t_dlst *s)
+/*
+Reverse rotate a stack by moving the last node to the front.
+*/
+static void	reverse_rotate(t_dlst **s)
 {
-	t_dlst	*tmp;
-	int		last;
+	t_dlst	*last;
+	t_dlst	*before_last;
 
-	if (!s || !s->next)
-		return ;
-	tmp = db_lstlast(s);
-	last = tmp->content;
-	while (tmp->prev)
-	{
-		tmp->content = tmp->prev->content;
-		tmp = tmp->prev;
-	}
-	tmp->content = last;
+	if (!s || !*s || !(*s)->next)
+		return;
+
+	last = db_lstlast(*s);
+	before_last = last->prev;
+
+	before_last->next = NULL;
+
+	last->prev = NULL;
+	last->next = *s;
+	(*s)->prev = last;
+
+	*s = last;
 }
+
 
 // /* (reverse rotate a): Shift down all elements of stack a by 1.
 // The last element becomes the first one. */
-void	rra(t_dlst *a)
+void	rra(t_dlst **a)
 {
 	reverse_rotate(a);
 	ft_printf("rra\n");
@@ -39,14 +46,14 @@ void	rra(t_dlst *a)
 
 // /* (reverse rotate b): Shift down all elements of stack b by 1.
 // The last element becomes the first one. */
-void	rrb(t_dlst *b)
+void	rrb(t_dlst **b)
 {
 	reverse_rotate(b);
 	ft_printf("rrb\n");
 }
 
 // /* rra and rrb at the same time. */
-void	rrr(t_dlst *a, t_dlst *b)
+void	rrr(t_dlst **a, t_dlst **b)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);

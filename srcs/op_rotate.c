@@ -12,41 +12,53 @@
 
 #include "../includes/push_swap.h"
 
-static void	rotate(t_dlst *s)
+/*
+Rotate a stack by moving the first node to the end of the list.
+*/
+static void	rotate(t_dlst **s)
 {
-	int		first;
-	t_dlst	*tmp;
+	t_dlst	*first;
+	t_dlst	*last;
 
-	if (!s || !s->next)
-		return ;
-	tmp = s;
-	first = tmp->content;
-	while (tmp->next)
-	{
-		tmp->content = tmp->next->content;
-		tmp = tmp->next;
-	}
-	tmp->content = first;
+	if (!s || !*s || !(*s)->next)
+		return;
+
+	first = *s;
+	last = db_lstlast(*s);
+
+	*s = first->next;
+	(*s)->prev = NULL;
+
+	last->next = first;
+	first->prev = last;
+	first->next = NULL;
 }
 
-// /* (rotate a): Shift up all elements of stack a by 1.
-// The first element becomes the last one. */
-void	ra(t_dlst *a)
+
+/* 
+(rotate a): Shift up all elements of stack a by 1.
+The first element becomes the last one. 
+*/
+void	ra(t_dlst **a)
 {
 	rotate(a);
 	ft_printf("ra\n");
 }
 
-// /* (rotate b): Shift up all elements of stack b by 1.
-// The first element becomes the last one. */
-void	rb(t_dlst *b)
+/* 
+(rotate b): Shift up all elements of stack b by 1.
+The first element becomes the last one.
+*/
+void	rb(t_dlst **b)
 {
 	rotate(b);
 	ft_printf("rb\n");
 }
 
-// /* ra and rb at the same time. */
-void	rr(t_dlst *a, t_dlst *b)
+/*
+ra and rb at the same time.
+*/
+void	rr(t_dlst **a, t_dlst **b)
 {
 	rotate(a);
 	rotate(b);
