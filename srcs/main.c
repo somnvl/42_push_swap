@@ -42,7 +42,7 @@ int	main(int argc, char **argv)
 		ft_printf("------\n");
 
 		sa(&a);
- 
+
 		tmpa = a;
 		tmpb = b;
 
