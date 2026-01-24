@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 21:31:03 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 03:38:57 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 17:22:02 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	db_lstadd_back(t_dlst **lst, t_dlst *new)
 	t_dlst	*last;
 
 	if (!lst || !new)
-		return;
+		return ;
 	if (!*lst)
 	{
 		*lst = new;
 		new->prev = NULL;
 		new->next = NULL;
-		return;
+		return ;
 	}
 	last = db_lstlast(*lst);
 	last->next = new;

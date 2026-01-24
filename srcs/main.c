@@ -26,18 +26,18 @@ void	free_list(t_dlst *lst)
 
 static int	is_sorted(t_dlst *a)
 {
-    t_dlst  *current;
+	t_dlst	*current;
 
-    if (!a || !a->next)
-        return (1);
-    current = a;
-    while (current->next)
-    {
-        if (current->content > current->next->content)
-            return (0);
-        current = current->next;
-    }
-    return (1);
+	if (!a || !a->next)
+		return (1);
+	current = a;
+	while (current->next)
+	{
+		if (current->content > current->next->content)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -60,7 +60,7 @@ int	main(int argc, char **argv)
 		low_sort(size, &a, &b);
 	else
 	{
-		ft_printf("need turkish_algo\n"); 
+		ft_printf("need turkish_algo\n");
 		//turkish_algo(a, b); 
 	}
 	print_stack(a, 'A');

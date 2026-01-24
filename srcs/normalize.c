@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 15:46:10 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 17:21:38 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,6 @@ static t_dlst	*find_min_unindexed(t_dlst *a)
 	}
 	return (min);
 }
-
 
 void	normalize(t_dlst *a)
 {

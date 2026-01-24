@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 02:52:15 by so                #+#    #+#             */
-/*   Updated: 2026/01/24 16:44:24 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 17:24:55 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,6 @@ void	print_stack(t_dlst *lst, char name)
 	}
 	ft_printf("\n");
 }
-
 
 void	print_stacks(t_dlst *a, t_dlst *b)
 {
