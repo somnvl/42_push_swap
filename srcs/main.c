@@ -65,7 +65,7 @@ int	main(int argc, char **argv)
 	else
 	{
 		ft_printf("need turkish_algo\n"); 
-		//turkish_algo(a, b);
+		//turkish_algo(a, b); 
 	}
 	return (free_list(a), free_list(b), 0);
 }
