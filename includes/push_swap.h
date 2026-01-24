@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 03:36:32 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 16:09:42 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@ int		db_lstsize(t_dlst *lst);
 t_dlst	*parsing(int argc, char **argv);
 t_dlst	*lst_creator(int argc, char **argv);
 
+/* NORMALIZE */
+void	normalize(t_dlst *lst);
+
 /* OPERATIONS */
 void	sa(t_dlst **a);
 void	sb(t_dlst **b);
@@ -49,9 +52,6 @@ void	rrr(t_dlst **a, t_dlst **b);
 
 /* EARLY EXIT */
 void	low_sort(int size, t_dlst **a, t_dlst **b);
-
-/* NORMALIZE */
-void	normalize(t_dlst *lst);
 
 /* DEBUG */
 void	print_stack(t_dlst *lst, char name);

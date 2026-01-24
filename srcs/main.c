@@ -55,17 +55,14 @@ int	main(int argc, char **argv)
 	if (is_sorted(a))
 		return (free_list(a), 0);
 	normalize(a);
-	print_stacks(a, b);
 	size = db_lstsize(a);
 	if (size <= 5)
-	{
-		ft_printf("need low_sort\n"); 
-		//low_sort(size, &a, &b);
-	}
+		low_sort(size, &a, &b);
 	else
 	{
 		ft_printf("need turkish_algo\n"); 
 		//turkish_algo(a, b); 
 	}
+	print_stack(a, 'A');
 	return (free_list(a), free_list(b), 0);
 }

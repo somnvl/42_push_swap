@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 02:52:15 by so                #+#    #+#             */
-/*   Updated: 2026/01/24 03:42:20 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 16:44:24 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	print_stack(t_dlst *lst, char name)
 {
-	ft_printf("Stack %c: ", name);
+	ft_printf("\nStack %c: ", name);
 	while (lst)
 	{
 		ft_printf("%d(%d)", lst->content, lst->index);
