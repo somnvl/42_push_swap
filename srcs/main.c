@@ -50,10 +50,11 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (!a)
 		return (free_list(a), free_list(b), ft_printf("Error\n"), 1);
-	// normalize(a); 
-	print_stacks(a, b);
+	//print_stacks(a, b);
+	//normalize(a);
 	if (is_sorted(a))
 		return (free_list(a), free_list(b), 0);
+	print_stacks(a, b);
 	size = db_lstsize(a);
 	if (size <= 5)
 		ft_printf("need low_sort\n"); // low_sort(size, &a, &b);
