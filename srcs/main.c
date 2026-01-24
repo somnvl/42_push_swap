@@ -44,24 +44,19 @@ int	main(int argc, char **argv)
 {
 	t_dlst	*a;
 	t_dlst	*b;
-	// int		size;
+	int		size;
 
 	a = parsing(argc, argv);
 	b = NULL;
-
 	if (!a)
 		return (free_list(a), free_list(b), ft_printf("Error\n"), 1);
-
 	// normalize(a);
-
 	if (is_sorted(a))
 		return (free_list(a), free_list(b), 0);
-	ft_printf("		TO SORT\n");
-	// size = db_lstsize(a);
-	// if (size <= 5)
-	// 	low_sort(size, &a, &b);
-	// else
-	// 	turkish_algo(a, b);
-
+	size = db_lstsize(a);
+	if (size <= 5)
+		ft_printf("low_sort\n"); //low_sort(size, &a, &b);
+	else
+		ft_printf("turkish_algo\n"); //turkish_algo(a, b);
 	return (free_list(a), free_list(b), 0);
 }

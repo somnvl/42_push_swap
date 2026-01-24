@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 22:11:18 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 02:40:15 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,6 @@ void	rrb(t_dlst **b);
 void	rrr(t_dlst **a, t_dlst **b);
 
 /* EARLY EXIT */
-void	low_sort(int argc, t_dlst **a, t_dlst **b);
+void	low_sort(int size, t_dlst **a, t_dlst **b);
 
 #endif
