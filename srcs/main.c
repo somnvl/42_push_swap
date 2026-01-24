@@ -40,6 +40,12 @@ static int	is_sorted(t_dlst *a)
 	return (1);
 }
 
+void	turk_sort(int size, t_dlst **a, t_dlst **b)
+{
+	phase_a(size, a, b);
+	sort_three(a);
+}
+
 int	main(int argc, char **argv)
 {
 	t_dlst	*a;
@@ -55,10 +61,12 @@ int	main(int argc, char **argv)
 	if (is_sorted(a))
 		return (free_list(a), 0);
 	normalize(a);
+	// print_stacks(a, b);
 	size = db_lstsize(a);
 	if (size <= 5)
 		low_sort(size, &a, &b);
 	else
 		turk_sort(size, &a, &b);
+	// print_stacks(a, b);
 	return (free_list(a), free_list(b), 0);
 }

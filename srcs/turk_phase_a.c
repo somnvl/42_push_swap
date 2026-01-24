@@ -1,34 +1,42 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   debug.c                                            :+:      :+:    :+:   */
+/*   turk_phase_a.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 02:52:15 by so                #+#    #+#             */
-/*   Updated: 2026/01/24 20:25:48 by so               ###   ########.fr       */
+/*   Created: 2026/01/24 21:26:35 by so                #+#    #+#             */
+/*   Updated: 2026/01/24 21:37:31 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	print_stack(t_dlst *lst, char name)
+void	phase_a(int size, t_dlst **a, t_dlst **b)
 {
-	ft_printf("Stack %c: ", name);
-	while (lst)
-	{
-		ft_printf("%d(%d)", lst->content, lst->index);
-		if (lst->next)
-			ft_printf(" -> ");
-		lst = lst->next;
-	}
-	ft_printf("\n");
-}
+	int	step;
+	int	start;
+	int	end;
+	int	max;
+	int	b_size;
 
-void	print_stacks(t_dlst *a, t_dlst *b)
-{
-	ft_printf("----- STACKS -----\n");
-	print_stack(a, 'A');
-	print_stack(b, 'B');
-	ft_printf("------------------\n");
+	step = chunk_step(size);
+	max = size - 1;
+	b_size = 0;
+	chunk_init(&start, &end, step, max);
+	while (size > 3)
+	{
+		if ((*a)->index >= start && (*a)->index <= end)
+		{
+			pb(a, b);
+			size--;
+			b_size++;
+			if (b_size > 1)
+				rb(b);
+		}
+		else
+			ra(a);
+		if (!chunk_left(*a, start, end))
+			chunk_next(&start, &end, step, max);
+	}
 }
