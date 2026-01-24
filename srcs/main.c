@@ -50,7 +50,7 @@ int	main(int argc, char **argv)
 	b = NULL;
 	if (!a)
 		return (free_list(a), free_list(b), ft_printf("Error\n"), 1);
-	// normalize(a);
+	// normalize(a); 
 	print_stacks(a, b);
 	if (is_sorted(a))
 		return (free_list(a), free_list(b), 0);
