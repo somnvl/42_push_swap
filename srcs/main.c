@@ -24,7 +24,7 @@ void	free_list(t_dlst *lst)
 	}
 }
 
-static int	is_sorted(t_dlst *a)
+static int	already_sorted(t_dlst *a)
 {
 	t_dlst	*current;
 
@@ -40,10 +40,31 @@ static int	is_sorted(t_dlst *a)
 	return (1);
 }
 
-void	turk_sort(int size, t_dlst **a, t_dlst **b)
+static void	final_rotate(t_dlst **a)
+{
+	int	len;
+	int	pos;
+
+	len = db_lstsize(*a);
+	pos = find_min(*a);
+	if (pos <= len / 2)
+	{
+		while (pos-- > 0)
+			ra(a);
+	}
+	else
+	{
+		while (pos++ < len)
+			rra(a);
+	}
+}
+
+static void	turk_sort(int size, t_dlst **a, t_dlst **b)
 {
 	phase_a(size, a, b);
 	sort_three(a);
+	phase_b(a, b);
+	final_rotate(a);
 }
 
 int	main(int argc, char **argv)
@@ -58,15 +79,13 @@ int	main(int argc, char **argv)
 		return (free_list(a), 0);
 	if (!a)
 		return (free_list(a), ft_printf("Error\n"), 1);
-	if (is_sorted(a))
+	if (already_sorted(a))
 		return (free_list(a), 0);
 	normalize(a);
-	// print_stacks(a, b);
 	size = db_lstsize(a);
 	if (size <= 5)
 		low_sort(size, &a, &b);
 	else
 		turk_sort(size, &a, &b);
-	// print_stacks(a, b);
 	return (free_list(a), free_list(b), 0);
 }
