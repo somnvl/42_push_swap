@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 21:31:03 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 17:22:02 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 17:55:41 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,9 +39,9 @@ t_dlst	*db_lstnew(int content)
 	if (!lst)
 		return (NULL);
 	lst->prev = NULL;
+	lst->next = NULL;
 	lst->content = content;
 	lst->index = -1;
-	lst->next = NULL;
 	return (lst);
 }
 

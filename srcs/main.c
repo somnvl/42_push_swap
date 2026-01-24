@@ -59,6 +59,6 @@ int	main(int argc, char **argv)
 	if (size <= 5)
 		low_sort(size, &a, &b);
 	else
-		turkish_algo(); 
+		turk_sort();
 	return (free_list(a), free_list(b), 0);
 }
