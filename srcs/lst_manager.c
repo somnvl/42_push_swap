@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/23 21:31:03 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 22:07:29 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 03:38:57 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ t_dlst	*db_lstnew(int content)
 	lst = malloc(sizeof(t_dlst));
 	if (!lst)
 		return (NULL);
-	lst->content = content;
 	lst->prev = NULL;
+	lst->content = content;
+	lst->index = -1;
 	lst->next = NULL;
 	return (lst);
 }

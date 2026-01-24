@@ -54,7 +54,8 @@ int	main(int argc, char **argv)
 		return (free_list(a), ft_printf("Error\n"), 1);
 	if (is_sorted(a))
 		return (free_list(a), 0);
-	//normalize(a);
+	normalize(a);
+	print_stacks(a, b);
 	size = db_lstsize(a);
 	if (size <= 5)
 	{
