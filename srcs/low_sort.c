@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 17:12:04 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 17:19:37 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,37 +58,54 @@ static void sort_three(t_dlst **a)
 static void sort_four(t_dlst **a, t_dlst **b)
 {
     int min_pos;
+    int size;
     
     min_pos = find_min(*a);
-    if (min_pos <= 2)
-        while (min_pos--)
+    size = 4;
+    if (min_pos <= size / 2)
+    {
+        while (min_pos > 0)
+        {
             ra(a);
+            min_pos--;
+        }
+    }
     else
-        while (4 - min_pos)
-		{
+    {
+        while (min_pos < size)
+        {
             rra(a);
-			min_pos--;
-		}
+            min_pos++;
+        }
+    }
     pb(a, b);
     sort_three(a);
     pa(a, b);
 }
 
-
 static void sort_five(t_dlst **a, t_dlst **b)
 {
     int min_pos;
+    int size;
     
     min_pos = find_min(*a);
-    if (min_pos <= 2)
-        while (min_pos--)
+    size = 5;
+    if (min_pos <= size / 2)
+    {
+        while (min_pos > 0)
+        {
             ra(a);
+            min_pos--;
+        }
+    }
     else
-        while (5 - min_pos)
-		{
+    {
+        while (min_pos < size)
+        {
             rra(a);
-			min_pos++;
-		}
+            min_pos++;
+        }
+    }
     pb(a, b);
     sort_four(a, b);
     pa(a, b);
