@@ -6,13 +6,13 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 17:27:01 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 19:26:51 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static int	find_min(t_dlst *s)
+int	find_min(t_dlst *s)
 {
 	int	i;
 	int	pos;
@@ -34,7 +34,7 @@ static int	find_min(t_dlst *s)
 	return (pos);
 }
 
-static void	sort_three(t_dlst **a)
+void	sort_three(t_dlst **a)
 {
 	int	first;
 	int	second;
@@ -43,12 +43,15 @@ static void	sort_three(t_dlst **a)
 	first = (*a)->index;
 	second = (*a)->next->index;
 	third = (*a)->next->next->index;
-	if (first > second && second < third && first < third)
+	 if (first > second && second < third && first < third)
 		sa(a);
 	else if (first > second && second < third && first > third)
 		ra(a);
 	else if (first < second && second > third && first < third)
+	{
 		sa(a);
+		ra(a);
+	}
 	else if (first < second && second > third && first > third)
 		rra(a);
 	else if (first > second && second > third)
@@ -58,7 +61,7 @@ static void	sort_three(t_dlst **a)
 	}
 }
 
-static void	sort_four(t_dlst **a, t_dlst **b)
+void	sort_four(t_dlst **a, t_dlst **b)
 {
 	int	min_pos;
 	int	size;
@@ -86,7 +89,7 @@ static void	sort_four(t_dlst **a, t_dlst **b)
 	pa(a, b);
 }
 
-static void	sort_five(t_dlst **a, t_dlst **b)
+void	sort_five(t_dlst **a, t_dlst **b)
 {
 	int	min_pos;
 	int	size;
