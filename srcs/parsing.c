@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:58:43 by so               ###   ########.fr       */
+/*   Updated: 2026/01/24 03:21:47 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ t_dlst	*parsing(int argc, char **argv)
 {
 	t_dlst	*stack_a;
 
-	if (argc < 2)
-		return (NULL);
 	if (!valid_char(argc, argv))
 		return (NULL);
 	stack_a = lst_creator(argc, argv);
