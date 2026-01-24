@@ -51,12 +51,13 @@ int	main(int argc, char **argv)
 	if (!a)
 		return (free_list(a), free_list(b), ft_printf("Error\n"), 1);
 	// normalize(a);
+	print_stacks(a, b);
 	if (is_sorted(a))
 		return (free_list(a), free_list(b), 0);
 	size = db_lstsize(a);
 	if (size <= 5)
-		ft_printf("low_sort\n"); // low_sort(size, &a, &b);
+		ft_printf("need low_sort\n"); // low_sort(size, &a, &b);
 	else
-		ft_printf("turkish_algo\n"); // turkish_algo(a, b);
+		ft_printf("need turkish_algo\n"); // turkish_algo(a, b);
 	return (free_list(a), free_list(b), 0);
 }

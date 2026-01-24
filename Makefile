@@ -6,7 +6,7 @@
 #    By: so <so@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2026/01/23 21:59:55 by so               ###   ########.fr        #
+#    Updated: 2026/01/24 02:54:47 by so               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,6 +27,7 @@ SRCS = srcs/main.c \
 		srcs/op_push.c \
 		srcs/op_rotate.c \
 		srcs/op_reverse.c \
+		srcs/debug.c \
 
 OBJ_DIR = obj
 OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
