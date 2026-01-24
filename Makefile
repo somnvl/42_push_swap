@@ -6,7 +6,7 @@
 #    By: so <so@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2026/01/24 15:56:02 by so               ###   ########.fr        #
+#    Updated: 2026/01/24 17:33:19 by so               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,7 @@ SRCS = srcs/main.c \
 		srcs/op_reverse.c \
 		srcs/normalize.c \
 		srcs/low_sort.c \
+		srcs/turkish_algo.c \
 		srcs/debug.c \
 
 OBJ_DIR = obj
