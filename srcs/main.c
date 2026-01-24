@@ -54,6 +54,7 @@ int	main(int argc, char **argv)
 		return (free_list(a), ft_printf("Error\n"), 1);
 	if (is_sorted(a))
 		return (free_list(a), 0);
+	//normalize(a);
 	size = db_lstsize(a);
 	if (size <= 5)
 	{
@@ -63,7 +64,6 @@ int	main(int argc, char **argv)
 	else
 	{
 		ft_printf("need turkish_algo\n"); 
-		//normalize(a);
 		//turkish_algo(a, b);
 	}
 	return (free_list(a), free_list(b), 0);
