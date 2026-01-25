@@ -6,12 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:26:35 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 17:14:52 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:46:20 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Push stack A elements to B by chunks until 3 elements remain.
+*/
 void	phase_a(int size, t_dlst **a, t_dlst **b)
 {
 	int	step;
@@ -36,6 +39,9 @@ void	phase_a(int size, t_dlst **a, t_dlst **b)
 	}
 }
 
+/*
+** Reinsert all elements from B to A using cheapest moves.
+*/
 void	phase_b(t_dlst **a, t_dlst **b)
 {
 	int	ca;
@@ -49,6 +55,9 @@ void	phase_b(t_dlst **a, t_dlst **b)
 	}
 }
 
+/*
+** Rotate sorted stack A to place minimum index at top.
+*/
 void	final_rotate(t_dlst **a)
 {
 	int	len;

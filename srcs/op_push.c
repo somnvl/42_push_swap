@@ -6,16 +6,16 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:59:15 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:43:21 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-Swap the first two nodes of a stack by relinking pointers.
-The head becomes the second node, the second becomes the new head,
-and the rest of the list remains unchanged.
+** Swap the first two nodes of a stack by relinking pointers.
+** The head becomes the second node, the second becomes the new head,
+** and the rest of the list remains unchanged.
 */
 static void	push(t_dlst **src, t_dlst **dst)
 {
@@ -35,8 +35,8 @@ static void	push(t_dlst **src, t_dlst **dst)
 }
 
 /*
-(push a) Take the first element at the top of b and put it at the top of a.
-Do nothing if b is empty.
+** (push a) Take the first element at the top of b and put it at the top of a.
+** Do nothing if b is empty.
 */
 void	pa(t_dlst **a, t_dlst **b)
 {
@@ -45,8 +45,8 @@ void	pa(t_dlst **a, t_dlst **b)
 }
 
 /*
-(push b): Take the first element at the top of a and put it at the top of b.
-Do nothing if a is empty.
+** (push b): Take the first element at the top of a and put it at the top of b.
+** Do nothing if a is empty.
 */
 void	pb(t_dlst **a, t_dlst **b)
 {

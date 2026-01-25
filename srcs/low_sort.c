@@ -6,12 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 22:04:03 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:52:10 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Find position of minimum index in stack.
+*/
 int	find_min(t_dlst *s)
 {
 	int	i;
@@ -34,6 +37,9 @@ int	find_min(t_dlst *s)
 	return (pos);
 }
 
+/*
+** Sort exactly 3 elements in stack A using minimal operations.
+*/
 void	sort_three(t_dlst **a)
 {
 	int	first;
@@ -61,6 +67,10 @@ void	sort_three(t_dlst **a)
 	}
 }
 
+/*
+** Sort exactly 4 elements by moving min to top, pushing to B, 
+** sorting 3, then pulling back.
+*/
 void	sort_four(t_dlst **a, t_dlst **b)
 {
 	int	min_pos;
@@ -89,6 +99,10 @@ void	sort_four(t_dlst **a, t_dlst **b)
 	pa(a, b);
 }
 
+/*
+** Sort exactly 5 elements recursively by moving min to top, 
+** pushing to B, sorting 4, then pulling back.
+*/
 void	sort_five(t_dlst **a, t_dlst **b)
 {
 	int	min_pos;
@@ -117,6 +131,9 @@ void	sort_five(t_dlst **a, t_dlst **b)
 	pa(a, b);
 }
 
+/*
+** Dispatch small input sorting (2-5 elements) to specialized functions.
+*/
 void	low_sort(int size, t_dlst **a, t_dlst **b)
 {
 	if (size == 2)

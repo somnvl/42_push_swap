@@ -6,12 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 22:00:22 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:42:54 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Find first unindexed node with minimum content value.
+*/
 static t_dlst	*find_min_unindexed(t_dlst *a)
 {
 	t_dlst	*tmp;
@@ -31,6 +34,9 @@ static t_dlst	*find_min_unindexed(t_dlst *a)
 	return (min);
 }
 
+/*
+** Assign normalized indices [0..n-1] to stack based on sorted content order.
+*/
 void	normalize(t_dlst *a)
 {
 	t_dlst	*tmp;

@@ -6,14 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:59:06 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:42:16 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* Check if the recived arg is quoted, meaning it contains multiple 
-	numbers to split */
+/*
+** Check if argv string contains spaces (indicating quoted input).
+*/
 static int	is_quoted(char *argv)
 {
 	int	i;
@@ -28,7 +29,9 @@ static int	is_quoted(char *argv)
 	return (0);
 }
 
-/* Free the char ** containing double quoted args. */
+/*
+** Free memory from split string array.
+*/
 void	free_split(char **split)
 {
 	int	i;
@@ -42,7 +45,9 @@ void	free_split(char **split)
 	free(split);
 }
 
-/* Atol with a long every arg in the lst. */
+/*
+** Convert string to long integer with sign handling.
+*/
 static long	ft_atol(const char *nb)
 {
 	int		i;
@@ -66,7 +71,9 @@ static long	ft_atol(const char *nb)
 	return (final);
 }
 
-/* Atol the arg and put it in the lst. */
+/*
+** Parse string to int and add to list, validate INT range.
+*/
 static int	lst_nbr(t_dlst **lst, char *str)
 {
 	long	nbr;
@@ -78,7 +85,9 @@ static int	lst_nbr(t_dlst **lst, char *str)
 	return (1);
 }
 
-/* Split every args into a lst. */
+/*
+** Create stack list from argv, handling quoted multi-number strings.
+*/
 t_dlst	*lst_creator(int argc, char **argv)
 {
 	int		i;

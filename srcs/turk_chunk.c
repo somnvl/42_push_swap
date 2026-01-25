@@ -6,12 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:35:11 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 15:58:15 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:47:11 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Calculate chunk size based on input size (size/5, size/10, size/15).
+*/
 int	chunk_step(int size)
 {
 	if (size <= 100)
@@ -21,6 +24,9 @@ int	chunk_step(int size)
 	return (size / 15);
 }
 
+/*
+** Initialize first chunk range [0, step-1], cap at max index.
+*/
 void	chunk_init(int *start, int *end, int step, int max)
 {
 	*start = 0;
@@ -29,6 +35,9 @@ void	chunk_init(int *start, int *end, int step, int max)
 		*end = max;
 }
 
+/*
+** Check if any elements from current chunk remain in stack A.
+*/
 int	chunk_left(t_dlst *a, int start, int end)
 {
 	while (a)
@@ -40,6 +49,9 @@ int	chunk_left(t_dlst *a, int start, int end)
 	return (0);
 }
 
+/*
+** Advance to next chunk range, cap at max index if needed.
+*/
 void	chunk_next(int *start, int *end, int step, int max)
 {
 	*start = *end + 1;

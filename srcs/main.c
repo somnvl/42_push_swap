@@ -12,6 +12,10 @@
 
 #include "../includes/push_swap.h"
 
+/*
+** Free a doubly-linked list of t_dlst nodes.
+** Iterates through the list, releasing each node to avoid memory leaks.
+*/
 void	free_list(t_dlst *lst)
 {
 	t_dlst	*tmp;
@@ -24,6 +28,10 @@ void	free_list(t_dlst *lst)
 	}
 }
 
+/*
+** Check if a stack is already sorted in ascending order.
+** Returns 1 if empty, one element, or fully sorted; 0 otherwise.
+*/
 static int	already_sorted(t_dlst *a)
 {
 	t_dlst	*current;
@@ -40,6 +48,11 @@ static int	already_sorted(t_dlst *a)
 	return (1);
 }
 
+/*
+** Apply the Turkish sorting strategy for larger inputs.
+** Splits work into phase A (push by chunks), sorts the remaining three in A,
+** then reinserts from B and finally rotates A to its final sorted position.
+*/
 static void	turk_sort(int size, t_dlst **a, t_dlst **b)
 {
 	phase_a(size, a, b);

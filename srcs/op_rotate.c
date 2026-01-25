@@ -6,14 +6,14 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:59:21 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:44:26 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-Rotate a stack by moving the first node to the end of the list.
+** Rotate a stack by moving the first node to the end of the list.
 */
 static void	rotate(t_dlst **s)
 {
@@ -32,8 +32,8 @@ static void	rotate(t_dlst **s)
 }
 
 /* 
-(rotate a): Shift up all elements of stack a by 1.
-The first element becomes the last one. 
+** (rotate a): Shift up all elements of stack a by 1.
+** The first element becomes the last one. 
 */
 void	ra(t_dlst **a)
 {
@@ -42,8 +42,8 @@ void	ra(t_dlst **a)
 }
 
 /* 
-(rotate b): Shift up all elements of stack b by 1.
-The first element becomes the last one.
+** (rotate b): Shift up all elements of stack b by 1.
+** The first element becomes the last one.
 */
 void	rb(t_dlst **b)
 {
@@ -52,7 +52,7 @@ void	rb(t_dlst **b)
 }
 
 /*
-ra and rb at the same time.
+** ra and rb at the same time.
 */
 void	rr(t_dlst **a, t_dlst **b)
 {

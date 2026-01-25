@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 17:15:06 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:34:56 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,8 +70,6 @@ void	chunk_next(int *start, int *end, int step, int max);
 
 void	pick_cheapest(t_dlst *a, t_dlst *b, int *ca, int *cb);
 void	apply_cheapest(t_dlst **a, t_dlst **b, int ca, int cb);
-
-
 
 /* DEBUG */
 void	print_stack(t_dlst *lst, char name);

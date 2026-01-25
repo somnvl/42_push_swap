@@ -6,17 +6,17 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/23 21:59:23 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:44:50 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-Swap the first two nodes of a stack by relinking pointers.
-The second node becomes the new head, the first moves to second place, 
-and the rest of the list is reattached unchanged.
-No node content is modified.
+** Swap the first two nodes of a stack by relinking pointers.
+** The second node becomes the new head, the first moves to second place, 
+** and the rest of the list is reattached unchanged.
+** No node content is modified.
 */
 static void	swap(t_dlst **s)
 {
@@ -39,8 +39,8 @@ static void	swap(t_dlst **s)
 }
 
 /*
-(swap a): Swap the first 2 elements at the top of stack a.
-Do nothing if there is only one element or none.
+** (swap a): Swap the first 2 elements at the top of stack a.
+** Do nothing if there is only one element or none.
 */
 void	sa(t_dlst **a)
 {
@@ -49,8 +49,8 @@ void	sa(t_dlst **a)
 }
 
 /*
-(swap b): Swap the first 2 elements at the top of stack b.
-Do nothing if there is only one element or none.
+** (swap b): Swap the first 2 elements at the top of stack b.
+** Do nothing if there is only one element or none.
 */
 void	sb(t_dlst **b)
 {
@@ -59,7 +59,7 @@ void	sb(t_dlst **b)
 }
 
 /*
-sa and sb at the same time.
+** sa and sb at the same time.
 */
 void	ss(t_dlst **a, t_dlst **b)
 {

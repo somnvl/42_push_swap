@@ -6,12 +6,16 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 20:05:45 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 17:31:47 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:52:26 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+/*
+** Find optimal insertion position in A for element with index i 
+** (next larger element).
+*/
 static int	pos_a(t_dlst *a, int i)
 {
 	t_dlst	*tmp;
@@ -38,6 +42,9 @@ static int	pos_a(t_dlst *a, int i)
 	return (find_min(a));
 }
 
+/*
+** Get position index of node in stack B (0 = top).
+*/
 static int	pos_b(t_dlst *b, t_dlst *node)
 {
 	int	i;
@@ -51,6 +58,9 @@ static int	pos_b(t_dlst *b, t_dlst *node)
 	return (i);
 }
 
+/*
+** Calculate rotation cost to bring position to top (positive ra, negative rra).
+*/
 static int	cost_to_top(t_dlst *s, int pos)
 {
 	int	len;
@@ -63,6 +73,9 @@ static int	cost_to_top(t_dlst *s, int pos)
 	return (pos - len);
 }
 
+/*
+** Calculate total cost of rotations, optimizing parallel moves.
+*/
 static int	total_cost(int ca, int cb)
 {
 	if (ca > 0 && cb > 0)
@@ -75,7 +88,7 @@ static int	total_cost(int ca, int cb)
 	{
 		if (-ca > -cb)
 			return (-ca);
-		return (-cb); 
+		return (-cb);
 	}
 	if (ca < 0)
 		return (-ca + cb);
@@ -84,6 +97,9 @@ static int	total_cost(int ca, int cb)
 	return (0);
 }
 
+/*
+** Find element in B with minimum total rotation cost to insert into A.
+*/
 void	pick_cheapest(t_dlst *a, t_dlst *b, int *ca, int *cb)
 {
 	t_dlst	*tmp;

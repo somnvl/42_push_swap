@@ -6,14 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/24 03:21:47 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 18:45:40 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-/* Check that all arguments input are digits only, 
-	spaces or optional '+' or '-'. */
+/*
+** Validate argv contains only digits, spaces, and valid +/- signs.
+*/
 static int	valid_char(int argc, char **argv)
 {
 	int	i;
@@ -43,7 +44,9 @@ static int	valid_char(int argc, char **argv)
 	return (1);
 }
 
-// /* Looks for duplicates in the lst. */
+/*
+** Check for duplicate values in list, return 1 if found.
+*/
 static int	check_duplicates(t_dlst *lst)
 {
 	t_dlst	*tmp1;
@@ -64,8 +67,9 @@ static int	check_duplicates(t_dlst *lst)
 	return (0);
 }
 
-/* Main parsing function that check the validity of the args
-	and put them in a list. */
+/*
+** Parse argv into validated stack_a with no duplicates.
+*/
 t_dlst	*parsing(int argc, char **argv)
 {
 	t_dlst	*stack_a;
