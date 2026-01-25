@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:26:35 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 19:12:17 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 21:46:14 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,5 @@ void	phase_b(t_dlst **a, t_dlst **b)
 		pick_cheapest(*a, *b, &ca, &cb);
 		apply_cheapest(a, b, ca, cb);
 		pa(a, b);
-	}
-}
-
-/*
-** Rotate sorted stack A to place minimum index at top.
-*/
-void	final_rotate(t_dlst **a)
-{
-	int	len;
-	int	pos;
-
-	len = db_lstsize(*a);
-	pos = find_min(*a);
-	if (pos <= len / 2)
-	{
-		while (pos-- > 0)
-			ra(a);
-	}
-	else
-	{
-		while (pos++ < len)
-			rra(a);
 	}
 }

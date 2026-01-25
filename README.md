@@ -260,3 +260,14 @@ typedef struct s_dlst {
 
 
 ---
+
+
+Cache compteur d'éléments dans le chunk (sauve ~200-400 ops) ⭐⭐⭐
+
+Early exit en phase B si coût ≤ 2 (facile, ~50-100 ops)
+
+Combiner pos_a() + find_min() en une seule traversée (~30-50 ops)
+
+Décider dynamiquement ra() vs rra() selon distance (~100-300 ops)
+
+Rotation conditionnelle après pb() (~50-150 ops)

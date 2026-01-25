@@ -49,6 +49,28 @@ static int	already_sorted(t_dlst *a)
 }
 
 /*
+** Rotate sorted stack A to place minimum index at top.
+*/
+static void	final_rotate(t_dlst **a)
+{
+	int	len;
+	int	pos;
+
+	len = db_lstsize(*a);
+	pos = find_min(*a);
+	if (pos <= len / 2)
+	{
+		while (pos-- > 0)
+			ra(a);
+	}
+	else
+	{
+		while (pos++ < len)
+			rra(a);
+	}
+}
+
+/*
 ** Apply the Turkish sorting strategy for larger inputs.
 ** Splits work into phase A (push by chunks), sorts the remaining three in A,
 ** then reinserts from B and finally rotates A to its final sorted position.

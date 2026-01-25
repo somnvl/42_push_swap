@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 18:34:56 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 20:50:41 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ int		find_min(t_dlst *s);
 /* TURKISH ALGO */
 void	phase_a(int size, t_dlst **a, t_dlst **b);
 void	phase_b(t_dlst **a, t_dlst **b);
-void	final_rotate(t_dlst **a);
 
 int		chunk_step(int size);
 void	chunk_init(int *start, int *end, int step, int max);
