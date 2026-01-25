@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 20:50:41 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 22:28:06 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,14 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+
+#define DEBUG 1
+
+#if DEBUG
+# define FT_DEBUG(x) ft_printf x
+#else
+# define FT_DEBUG(x)
+#endif
 
 typedef struct s_dlst
 {
