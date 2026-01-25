@@ -79,7 +79,6 @@ static void final_rotate(t_dlst **a)
 	FT_DEBUG(("FINAL PHASE: %d |\n", op));
 }
 
-
 /*
 ** Apply the Turkish sorting strategy for larger inputs.
 ** Splits work into phase A (push by chunks), sorts the remaining three in A,
