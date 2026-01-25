@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:26:35 by so                #+#    #+#             */
-/*   Updated: 2026/01/24 22:46:32 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 15:49:14 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,8 @@ void	phase_b(t_dlst **a, t_dlst **b)
 
 	while (*b)
 	{
-		/* 1) compute costs for the cheapest element in B */
 		pick_cheapest(*a, *b, &cost_a, &cost_b);
-
-		/* 2) apply the rotations exactly as computed */
 		apply_cheapest(a, b, cost_a, cost_b);
-
-		/* 3) insert the element into A */
 		pa(a, b);
 	}
 }

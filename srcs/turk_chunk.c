@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   turk_phase_a_chunk.c                               :+:      :+:    :+:   */
+/*   turk_chunk.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:35:11 by so                #+#    #+#             */
-/*   Updated: 2026/01/24 21:37:07 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 15:58:15 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	chunk_step(int size)
 	return (size / 15);
 }
 
-void    chunk_init(int *start, int *end, int step, int max)
+void	chunk_init(int *start, int *end, int step, int max)
 {
 	*start = 0;
 	*end = step - 1;
