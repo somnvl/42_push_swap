@@ -77,7 +77,7 @@ make re           # Clean rebuild
 # Test with validation (pass/fail check)
 ARG=$(shuf -i 1-100 -n 100 | xargs); ./push_swap $ARG | ./checker_linux $ARG
 
-# Count total operations for 100 random integers
+# Count total operations for random integers
 ./push_swap $(shuf -i 0-100 -n 100 | xargs) | wc -l
 
 # Combined: count operations AND validate correctness
@@ -258,30 +258,5 @@ typedef struct s_dlst {
 
 **Doubly-linked list** enables efficient traversal in both directions and O(1) insertion/deletion operations.
 
----
-
-## Performance Targets
-
-```
-Operations vs Input Size (Worst Case)
-
-     Moves
-      |
- 8500 |      ●                  FIXED SIZE (≤5)
-      |     /|
- 6300 |    / |              PROPORTIONAL DIVISION
- 5400 |   /  |     ●────────●    (chunk-based)
- 2800 |  /   |    /|
- 1900 | /    |   / |        ●
-  630 |●     |  /  |       /|
-   45 |      | /   |      / | ●
-      |      |/    |     /  |/|
-      └──────┴─────┴────┴───┴─┴────→ Size
-             20   100  200  500 1000
-
-● = constant operations for size ≤ 5
-~ 500-1000 ops for 100 elements
-~ 5000-6000 ops for 500 elements
-```
 
 ---
