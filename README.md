@@ -5,6 +5,15 @@
 
 # INSTRUCTIONS
 
+'''
+ARG=$(shuf -i 1-100 -n 100 | xargs); ./push_swap $ARG | ./checker_linux $ARG
+'''
+'''
+./push_swap $(shuf -i 0-100 -n 100 | xargs) | wc -l
+'''
+'''
+ARG=$(shuf -i 1-100 -n 100 | xargs); ./push_swap $ARG | tee >(wc -l) | ./checker_linux $ARG
+'''
 
 # RESOURCES
 
@@ -73,5 +82,3 @@ Moves
 Legende:
 ● = taille fixe = 20
 ○ = division proportionnelle
-
-----
