@@ -40,25 +40,6 @@ static int	already_sorted(t_dlst *a)
 	return (1);
 }
 
-static void	final_rotate(t_dlst **a)
-{
-	int	len;
-	int	pos;
-
-	len = db_lstsize(*a);
-	pos = find_min(*a);
-	if (pos <= len / 2)
-	{
-		while (pos-- > 0)
-			ra(a);
-	}
-	else
-	{
-		while (pos++ < len)
-			rra(a);
-	}
-}
-
 static void	turk_sort(int size, t_dlst **a, t_dlst **b)
 {
 	phase_a(size, a, b);

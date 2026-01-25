@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:26:35 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 15:49:14 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 17:14:52 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,32 @@ void	phase_a(int size, t_dlst **a, t_dlst **b)
 
 void	phase_b(t_dlst **a, t_dlst **b)
 {
-	int	cost_a;
-	int	cost_b;
+	int	ca;
+	int	cb;
 
 	while (*b)
 	{
-		pick_cheapest(*a, *b, &cost_a, &cost_b);
-		apply_cheapest(a, b, cost_a, cost_b);
+		pick_cheapest(*a, *b, &ca, &cb);
+		apply_cheapest(a, b, ca, cb);
 		pa(a, b);
+	}
+}
+
+void	final_rotate(t_dlst **a)
+{
+	int	len;
+	int	pos;
+
+	len = db_lstsize(*a);
+	pos = find_min(*a);
+	if (pos <= len / 2)
+	{
+		while (pos-- > 0)
+			ra(a);
+	}
+	else
+	{
+		while (pos++ < len)
+			rra(a);
 	}
 }

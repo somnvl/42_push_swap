@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 15:58:04 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 17:15:06 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,14 +61,17 @@ int		find_min(t_dlst *s);
 /* TURKISH ALGO */
 void	phase_a(int size, t_dlst **a, t_dlst **b);
 void	phase_b(t_dlst **a, t_dlst **b);
+void	final_rotate(t_dlst **a);
 
 int		chunk_step(int size);
 void	chunk_init(int *start, int *end, int step, int max);
 int		chunk_left(t_dlst *a, int start, int end);
 void	chunk_next(int *start, int *end, int step, int max);
 
-void	pick_cheapest(t_dlst *a, t_dlst *b, int *cost_a, int *cost_b);
-void	apply_cheapest(t_dlst **a, t_dlst **b, int cost_a, int cost_b);
+void	pick_cheapest(t_dlst *a, t_dlst *b, int *ca, int *cb);
+void	apply_cheapest(t_dlst **a, t_dlst **b, int ca, int cb);
+
+
 
 /* DEBUG */
 void	print_stack(t_dlst *lst, char name);
