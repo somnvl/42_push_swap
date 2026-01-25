@@ -12,6 +12,35 @@ The project combines several algorithmic concepts:
 
 This implementation uses the **Turkish Algorithm** (also known as the Turk algorithm) for optimal sorting of larger datasets, achieving competitive operation counts through chunking and greedy cost-based insertion.
 
+## Project Structure
+
+```
+push_swap/
+├── includes/
+│   └── push_swap.h
+├── libft/
+├── obj/
+├── srcs/
+│   ├── debug.c
+│   ├── low_sort.c
+│   ├── lst_creator.c
+│   ├── lst_manager.c
+│   ├── main.c
+│   ├── normalize.c
+│   ├── op_push.c
+│   ├── op_reverse.c
+│   ├── op_rotate.c
+│   ├── op_swap.c
+│   ├── parsing.c
+│   ├── turk_apply.c
+│   ├── turk_chunk.c
+│   ├── turk_pick.c
+│   └── turk_sort.c
+├── checker_linux
+├── Makefile
+└── README.md
+
+```
 
 ---
 
@@ -228,26 +257,6 @@ typedef struct s_dlst {
 ```
 
 **Doubly-linked list** enables efficient traversal in both directions and O(1) insertion/deletion operations.
-
----
-
-## Project Structure
-
-```
-push_swap/
-├── srcs/
-│   ├── main.c              (parsing → normalize → sort)
-│   ├── parsing.c           (validation & list creation)
-│   ├── normalize.c         (map values to indices)
-│   ├── low_sort.c          (size ≤ 5 handler)
-│   ├── turk_sort.c         (phase_a, phase_b, final_rotate)
-│   ├── turk_chunk.c        (chunking logic)
-│   ├── turk_pick.c         (cost calculation & selection)
-│   ├── turk_apply.c        (move execution optimization)
-│   ├── op_*.c              (push, rotate, swap operations)
-│   └── debug.c             (print utilities)
-└── libft/                  (custom library)
-```
 
 ---
 
