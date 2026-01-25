@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 21:26:35 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 21:46:14 by so               ###   ########.fr       */
+/*   Updated: 2026/01/25 21:49:18 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,10 +32,10 @@ void	phase_a(int size, t_dlst **a, t_dlst **b)
 			pb(a, b);
 			size--;
 		}
-		else
-			ra(a);
-		if (!chunk_left(*a, start, end))
-			chunk_next(&start, &end, step, max);
+		 else if (!chunk_left(*a, start, end))
+            chunk_next(&start, &end, step, max);
+        else
+            ra(a);
 	}
 }
 
