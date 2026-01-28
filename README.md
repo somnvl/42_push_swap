@@ -10,8 +10,6 @@ The project combines several algorithmic concepts:
 - **Optimization** - Cost-based decision making to minimize moves
 - **Data structures** - Doubly-linked lists for efficient stack operations
 
-This implementation uses the **Turkish Algorithm** (also known as the Turk algorithm) for optimal sorting of larger datasets, achieving competitive operation counts through chunking and greedy cost-based insertion.
-
 ## Project Structure
 
 ```
@@ -33,7 +31,7 @@ push_swap/
 │   ├── op_swap.c
 │   ├── parsing.c
 │   ├── turk_apply.c
-│   ├── turk_chunk.c
+│   ├── turk_utils.c
 │   ├── turk_pick.c
 │   └── turk_sort.c
 ├── checker_linux
@@ -48,13 +46,7 @@ push_swap/
 
 ### Core Concepts
 - [Push Swap Algorithm Explained](https://medium.com/@ayogun/push-swap-the-least-amount-of-moves-with-two-stacks-d1e76a71789a) - Medium article on optimization
-- [Sorting Algorithms Comparison](https://www.geeksforgeeks.org/sorting-algorithms-in-python/) - Algorithm fundamentals
 - [Stack Data Structure](https://www.geeksforgeeks.org/stack-data-structure/) - Stack operations overview
-
-### Turkish Algorithm Resources
-- Turk algorithm blog posts discussing chunk-based sorting strategies
-- Cost optimization in two-stack sorting environments
-
 
 ---
 
@@ -126,75 +118,64 @@ INPUT: ./push_swap 4 67 3 87 23
 
 ## Turkish Algorithm (Size > 5)
 
-### Phase A: A → B (Chunking)
+### Phase A: A → B (Cost-based extraction)
 
 ```
-Max Size = 100
-Chunk Step = 5
-
-PHASE A: Push elements from A to B by chunks
+PHASE A
 ┌──────────────────────────────────────────┐
-│ while (stack_a.size > 3):                │
-│   if (top_a.index IN current_chunk):     │
-│     pb(a, b)         // push to B        │
-│     rb(b)            // optional rotate  │
-│   else:                                  │
-│     ra(a)            // rotate A         │
-│                                          │
-│   if (no elements left in chunk):        │
-│     chunk_next()     // move to next     │
+│ while (size > 3):                        │
+│   1. Choose element in A with lowest     │
+│      rotation cost to reach the top      │
+│   2. Rotate A accordingly                │
+│   3. pb(a, b)                            │
+│   4. Optional rb(b) to improve ordering  │
 └──────────────────────────────────────────┘
-```
-
-**Purpose:** Distribute elements from stack A to stack B in ordered chunks, reducing the problem space for later insertion.
-
-### Phase B: B → A (Greedy Cost-Based)
 
 ```
-PHASE B: Insert back from B to A greedily
+**Purpose:** Reduce stack A to 3 elements by always pushing the cheapest-to-extract element into B, minimizing unnecessary rotations.
+
+### Phase B: B → A (Greedy reinsertion)
+
+```
+PHASE B
 ┌──────────────────────────────────────────┐
-│ while (stack_b NOT empty):               │
-│   1. Pick cheapest element from B        │
-│      (minimum total rotation cost)       │
-│   2. Calculate optimal path to place it  │
-│      in stack A (position > element < )  │
-│   3. Execute moves (optimize with rr/rrr)
-│   4. pa(a, b)        // push to A        │
+│ while (stack B not empty):               │
+│   1. Compute position of each B element  │
+│      in A (sorted insertion)             │
+│   2. Compute rotation costs (A + B)      │
+│   3. Pick cheapest element               │
+│   4. Apply rotations (rr / rrr if able)  │
+│   5. pa(a, b)                            │
 └──────────────────────────────────────────┘
-```
 
-**Purpose:** Insert all elements from B back into A at their correct positions, using cost-based selection to minimize total rotations.
+```
+**Purpose:** Reinsert elements from B into A in sorted order using a greedy, cost-minimizing strategy.
 
 ### Cost Calculation
 
 ```c
-cost_to_top(stack, position):
-  if position <= size/2:
-    return position           // ra() cost
+cost_to_top(len, pos):
+  if pos <= len / 2:
+    return pos
   else:
-    return position - size    // rra() cost (negative)
+    return pos - len
 
-total_cost(cost_a, cost_b):
-  if both same direction:
-    return max(abs)           // parallel ops: rr or rrr
-  if both opposite:
-    return sum(abs)           // sequential ops
+total_cost(ca, cb):
+  if same direction:
+    return max(abs(ca), abs(cb))
   else:
-    return sum(abs)
+    return abs(ca) + abs(cb)
+
 ```
 
 ### Final Rotate
 
 ```
-After Phase B, stack A is sorted but may need rotation
-to place minimum at top:
-
-position = find_min(a)
-if position <= size/2:
-  rotate forward (ra)   // top rotations
-else:
-  rotate backward (rra) // bottom rotations
+Once A is fully rebuilt:
+- Find position of smallest index
+- Rotate A (ra / rra) until minimum is on top
 ```
+This ensures stack A is perfectly aligned.
 
 ---
 
@@ -218,28 +199,15 @@ else:
 
 ## Key Functions
 
-### Chunking System
-
-```c
-chunk_step(size)              // Calculate step based on size
-chunk_init(&start, &end, ...) // Initialize first chunk range
-chunk_left(stack, start, end) // Check if elements remain in chunk
-chunk_next(&start, &end, ...) // Move to next chunk
 ```
 
 ### Cost Selection
 
 ```c
-pick_cheapest()               // Find optimal element from B
-  → pos_a()                   // Position in A (greedy insertion)
-  → pos_b()                   // Position in B
-  → cost_to_top()             // Calculate rotation cost
-  → total_cost()              // Compare all options
-
-apply_cheapest()              // Execute moves with optimization
-  → apply_both()              // Parallel rotations (rr/rrr)
-  → apply_a()                 // Individual A rotations
-  → apply_b()                 // Individual B rotations
+best_pos_global()   // Cheapest element to extract from A
+target_pos_a()     // Target insertion position in A
+pick_cheapest()    // Best element from B to reinsert
+apply_cheapest()   // Optimized rotations (rr / rrr)
 ```
 
 ---
@@ -256,7 +224,6 @@ typedef struct s_dlst {
 } t_dlst;
 ```
 
-**Doubly-linked list** enables efficient traversal in both directions and O(1) insertion/deletion operations.
-
+**Doubly-linked list** allows efficient rotations, reverse rotations, and position tracking during cost computation.
 
 ---

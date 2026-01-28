@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 16:41:30 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:16:24 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	rotate(t_dlst **s)
 void	ra(t_dlst **a)
 {
 	rotate(a);
-	ft_printf("ra\n");
+	write(2, "ra\n", 3);
 }
 
 /* 
@@ -50,7 +50,7 @@ void	ra(t_dlst **a)
 void	rb(t_dlst **b)
 {
 	rotate(b);
-	ft_printf("rb\n");
+	write(2, "rb\n", 3);
 }
 
 /*
@@ -60,5 +60,5 @@ void	rr(t_dlst **a, t_dlst **b)
 {
 	rotate(a);
 	rotate(b);
-	ft_printf("rr\n");
+	write(2, "rr\n", 3);
 }

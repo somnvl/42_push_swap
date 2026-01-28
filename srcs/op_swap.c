@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 16:42:25 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:16:48 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ static void	swap(t_dlst **s)
 void	sa(t_dlst **a)
 {
 	swap(a);
-	ft_printf("sa\n");
+	write(2, "sa\n", 3);
 }
 
 /*
@@ -54,7 +54,7 @@ void	sa(t_dlst **a)
 void	sb(t_dlst **b)
 {
 	swap(b);
-	ft_printf("sb\n");
+	write(2, "sb\n", 3);
 }
 
 /*
@@ -64,5 +64,5 @@ void	ss(t_dlst **a, t_dlst **b)
 {
 	swap(a);
 	swap(b);
-	ft_printf("ss\n");
+	write(2, "ss\n", 3);
 }

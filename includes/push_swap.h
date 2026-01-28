@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 16:52:46 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:24:10 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void	update_pos(t_dlst *s);
 int		cost_to_top_len(int len, int pos);
 int		best_pos_global(t_dlst *a, int len_a);
 int		abs_i(int x);
+int		already_sorted(t_dlst *a);
 
 /* DEBUG */
 void	print_stack(t_dlst *lst, char name);

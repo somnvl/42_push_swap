@@ -5,57 +5,74 @@
 #                                                     +:+ +:+         +:+      #
 #    By: so <so@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2026/01/28 16:51:44 by so               ###   ########.fr        #
+#    Created: 2026/01/28 17:55:44 by so                #+#    #+#              #
+#    Updated: 2026/01/28 18:28:28 by so               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = push_swap
+NAME        = push_swap
+BONUS_NAME  = checker
 
-CC = cc -g
-CFLAGS = -Wall -Wextra -Werror
-AR = ar
-ARFLAGS = rcs
-LIBFT = ./libft/libft.a
-INCLUDE = -I./include
+CC          = cc
+CFLAGS      = -Wall -Wextra -Werror -g
+INCLUDE     = -I./includes
 
-SRCS = srcs/main.c \
-		srcs/parsing.c \
-		srcs/lst_creator.c \
-		srcs/lst_manager.c \
-		srcs/op_swap.c \
-		srcs/op_push.c \
-		srcs/op_rotate.c \
-		srcs/op_reverse.c \
-		srcs/normalize.c \
-		srcs/low_sort.c \
-		srcs/turk_sort.c \
-		srcs/turk_utils.c \
-		srcs/turk_pick.c \
-		srcs/turk_apply.c \
-		srcs/debug.c \
+LIBFT_DIR   = ./libft
+LIBFT       = $(LIBFT_DIR)/libft.a
 
-OBJ_DIR = obj
-OBJ = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
+SRC_DIR     = srcs
+OBJ_DIR     = obj
+
+COMMON_SRCS = $(SRC_DIR)/parsing.c \
+              $(SRC_DIR)/lst_creator.c \
+              $(SRC_DIR)/lst_manager.c \
+              $(SRC_DIR)/op_swap.c \
+              $(SRC_DIR)/op_push.c \
+              $(SRC_DIR)/op_rotate.c \
+              $(SRC_DIR)/op_reverse.c \
+              $(SRC_DIR)/normalize.c \
+              $(SRC_DIR)/debug.c
+
+PUSH_SRCS   = $(SRC_DIR)/main.c \
+              $(SRC_DIR)/low_sort.c \
+              $(SRC_DIR)/turk_sort.c \
+              $(SRC_DIR)/turk_utils.c \
+              $(SRC_DIR)/turk_pick.c \
+              $(SRC_DIR)/turk_apply.c
+
+BONUS_SRCS  = $(SRC_DIR)/checker.c \
+
+PUSH_OBJ    = $(addprefix $(OBJ_DIR)/, $(notdir $(PUSH_SRCS:.c=.o)))
+COMMON_OBJ  = $(addprefix $(OBJ_DIR)/, $(notdir $(COMMON_SRCS:.c=.o)))
+BONUS_OBJ   = $(addprefix $(OBJ_DIR)/, $(notdir $(BONUS_SRCS:.c=.o)))
+
+.PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ) 
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(PUSH_OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(COMMON_OBJ) $(PUSH_OBJ) $(LIBFT)
+
+bonus: $(BONUS_NAME)
+
+$(BONUS_NAME): $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(BONUS_OBJ)
+	$(CC) $(CFLAGS) -o $(BONUS_NAME) $(COMMON_OBJ) $(BONUS_OBJ) $(LIBFT)
 
 $(LIBFT):
-	@$(MAKE) -C ./libft
+	@$(MAKE) -C $(LIBFT_DIR)
 
-$(OBJ_DIR)/%.o: ./srcs/%.c
+$(OBJ_DIR):
 	@mkdir -p $(OBJ_DIR)
-	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $^
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
+	$(CC) $(CFLAGS) $(INCLUDE) -c -o $@ $<
 
 clean:
-	@$(MAKE) clean -C ./libft
+	@$(MAKE) clean -C $(LIBFT_DIR)
 	@rm -rf $(OBJ_DIR)
 
 fclean: clean
-	@$(MAKE) fclean -C ./libft
-	@rm -f $(NAME)
+	@$(MAKE) fclean -C $(LIBFT_DIR)
+	@rm -f $(NAME) $(BONUS_NAME)
 
 re: fclean all

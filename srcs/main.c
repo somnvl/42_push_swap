@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:25:17 by so                #+#    #+#             */
-/*   Updated: 2026/01/28 16:36:35 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:12:08 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	free_list(t_dlst *lst)
 ** Empty or single-node stacks are considered sorted (returns 1).
 ** Returns 0 as soon as a descending pair is found.
 */
-static int	already_sorted(t_dlst *a)
+int	already_sorted(t_dlst *a)
 {
 	t_dlst	*current;
 

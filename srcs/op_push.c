@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 16:39:57 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:15:36 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	push(t_dlst **src, t_dlst **dst)
 void	pa(t_dlst **a, t_dlst **b)
 {
 	push(b, a);
-	ft_printf("pa\n");
+	write(2, "pa\n", 3);
 }
 
 /*
@@ -51,5 +51,5 @@ void	pa(t_dlst **a, t_dlst **b)
 void	pb(t_dlst **a, t_dlst **b)
 {
 	push(a, b);
-	ft_printf("pb\n");
+	write(2, "pb\n", 3);
 }
