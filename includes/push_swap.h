@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 19:09:45 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 20:25:30 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ void	sort_four(t_dlst **a, t_dlst **b);
 void	sort_five(t_dlst **a, t_dlst **b);
 int		find_min(t_dlst *s);
 
-/* TURKISH ALGO */
+/* TURK ALGO */
 void	turk_sort(int size, t_dlst **a, t_dlst **b);
 void	pick_cheapest(t_dlst *a, t_dlst *b, int *ca, int *cb);
 void	apply_cheapest(t_dlst **a, t_dlst **b, int ca, int cb);
@@ -68,6 +68,12 @@ void	update_pos(t_dlst *s);
 int		cost_to_top_len(int len, int pos);
 int		best_pos_global(t_dlst *a, int len_a);
 int		abs_i(int x);
+
+/* CHECKER */
+void	free_list(t_dlst *lst);
+int		already_sorted(t_dlst *a);
+int		check_op(const char *s1, const char *s2);
+int		exec_op(char *op, t_dlst **a, t_dlst **b);
 
 /* DEBUG */
 void	print_stack(t_dlst *lst, char name);

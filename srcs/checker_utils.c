@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   checker_utils.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/28 16:25:17 by so                #+#    #+#             */
-/*   Updated: 2026/01/28 20:10:49 by so               ###   ########.fr       */
+/*   Created: 2026/01/28 19:47:14 by so                #+#    #+#             */
+/*   Updated: 2026/01/28 20:09:00 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,32 +51,48 @@ int	already_sorted(t_dlst *a)
 }
 
 /*
-** Program entry point:
-** 1) Parse and validate arguments into stack A (stack B starts empty).
-** 2) Early exits: no args, parse error, or already sorted input.
-** 3) Normalize values into indexes for algorithmic comparisons.
-** 4) Dispatch: small inputs use low_sort, larger inputs use turk_sort.
-** 5) Free both stacks before exiting.
+** Compare two operation strings for an exact match.
+** Returns 1 if both strings are identical and end at the same time,
+** otherwise returns 0.
 */
-int	main(int argc, char **argv)
+int	check_op(const char *s1, const char *s2)
 {
-	t_dlst	*a;
-	t_dlst	*b;
-	int		size;
+	int	i;
 
-	a = parsing(argc, argv);
-	b = NULL;
-	if (argc < 2)
-		return (free_list(a), 0);
-	if (!a)
-		return (free_list(a), ft_printf("Error\n"), 1);
-	if (already_sorted(a))
-		return (free_list(a), 0);
-	normalize(a);
-	size = db_lstsize(a);
-	if (size <= 5)
-		low_sort(size, &a, &b);
-	else
-		turk_sort(size, &a, &b);
-	return (free_list(a), free_list(b), 0);
+	i = 0;
+	while (s1[i] && s2[i] && s1[i] == s2[i])
+		i++;
+	return (s1[i] == '\0' && s2[i] == '\0');
+}
+
+/*
+** Execute a single operation on stacks A and B.
+** The operation string must exactly match a valid instruction.
+** Returns 1 if the operation is valid and executed, 0 otherwise.
+*/
+int	exec_op(char *op, t_dlst **a, t_dlst **b)
+{
+	if (check_op(op, "sa\n"))
+		return (sa(a, 0), 1);
+	if (check_op(op, "sb\n"))
+		return (sb(b, 0), 1);
+	if (check_op(op, "ss\n"))
+		return (ss(a, b, 0), 1);
+	if (check_op(op, "pa\n"))
+		return (pa(a, b, 0), 1);
+	if (check_op(op, "pb\n"))
+		return (pb(a, b, 0), 1);
+	if (check_op(op, "ra\n"))
+		return (ra(a, 0), 1);
+	if (check_op(op, "rb\n"))
+		return (rb(b, 0), 1);
+	if (check_op(op, "rr\n"))
+		return (rr(a, b, 0), 1);
+	if (check_op(op, "rra\n"))
+		return (rra(a, 0), 1);
+	if (check_op(op, "rrb\n"))
+		return (rrb(b, 0), 1);
+	if (check_op(op, "rrr\n"))
+		return (rrr(a, b, 0), 1);
+	return (0);
 }

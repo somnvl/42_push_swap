@@ -6,7 +6,7 @@
 #    By: so <so@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/28 17:55:44 by so                #+#    #+#              #
-#    Updated: 2026/01/28 19:25:59 by so               ###   ########.fr        #
+#    Updated: 2026/01/28 19:54:24 by so               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,8 @@ COMMON_SRCS = $(SRC_DIR)/parsing.c \
 
 SRCS        = $(SRC_DIR)/main.c
 
-BONUS_SRCS  = $(SRC_DIR)/checker.c
+BONUS_SRCS  = $(SRC_DIR)/checker.c \
+              $(SRC_DIR)/checker_utils.c
 
 COMMON_OBJ  = $(addprefix $(OBJ_DIR)/, $(notdir $(COMMON_SRCS:.c=.o)))
 OBJ         = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
