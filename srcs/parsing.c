@@ -6,14 +6,17 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 18:45:40 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 17:31:31 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-** Validate argv contains only digits, spaces, and valid +/- signs.
+** Validate that argv strings contain only:
+** - digits and spaces,
+** - optional '+'/'-' signs placed correctly.
+** Rejects empty strings, missplaced signs, and invalid characters.
 */
 static int	valid_char(int argc, char **argv)
 {
@@ -45,7 +48,9 @@ static int	valid_char(int argc, char **argv)
 }
 
 /*
-** Check for duplicate values in list, return 1 if found.
+** Check the list for duplicate values.
+** Uses a double traversal to compare each node with the rest of the list.
+** Returns 1 if any duplicate content is found, 0 otherwise.
 */
 static int	check_duplicates(t_dlst *lst)
 {
@@ -68,7 +73,11 @@ static int	check_duplicates(t_dlst *lst)
 }
 
 /*
-** Parse argv into validated stack_a with no duplicates.
+** Parse and validate program arguments into stack A.
+** 1) Validate characters and sign placement in argv.
+** 2) Build the list (supports quoted arguments split by spaces).
+** 3) Reject duplicate values.
+** Returns the created list on success, or NULL on any validation error.
 */
 t_dlst	*parsing(int argc, char **argv)
 {
@@ -78,7 +87,7 @@ t_dlst	*parsing(int argc, char **argv)
 		return (NULL);
 	stack_a = lst_creator(argc, argv);
 	if (!stack_a)
-		return (free_list(stack_a), NULL);
+		return (NULL);
 	if (check_duplicates(stack_a))
 		return (free_list(stack_a), NULL);
 	return (stack_a);

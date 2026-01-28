@@ -6,7 +6,7 @@
 #    By: so <so@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/12/17 00:00:40 by somenvie          #+#    #+#              #
-#    Updated: 2026/01/24 22:42:27 by so               ###   ########.fr        #
+#    Updated: 2026/01/28 16:51:44 by so               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,7 +30,7 @@ SRCS = srcs/main.c \
 		srcs/normalize.c \
 		srcs/low_sort.c \
 		srcs/turk_sort.c \
-		srcs/turk_chunk.c \
+		srcs/turk_utils.c \
 		srcs/turk_pick.c \
 		srcs/turk_apply.c \
 		srcs/debug.c \

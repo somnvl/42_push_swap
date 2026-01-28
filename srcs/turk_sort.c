@@ -5,83 +5,95 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/24 21:26:35 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 22:51:10 by so               ###   ########.fr       */
+/*   Created: 2026/01/28 16:22:10 by so                #+#    #+#             */
+/*   Updated: 2026/01/28 17:07:52 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ra_rra(t_dlst **a, int start, int end)
-{
-    int		len;
-    int		dist_ra;
-    t_dlst	*tmp;
-
-    tmp = *a;
-    dist_ra = 0;
-    len = db_lstsize(*a);
-    while (tmp && !(tmp->index >= start && tmp->index <= end))
-    {
-        dist_ra++;
-        tmp = tmp->next;
-    }
-    if (dist_ra <= len / 2)
-        ra(a);
-    else
-        rra(a);
-}
-
 /*
-** Push stack A elements to B by chunks until 3 elements remain.
+** Phase A: reduce stack A to 3 elements by pushing to B.
+** At each step, we pick the element in A that is cheapest to bring on top
+** (best_pos_global + cost_to_top_len), rotate A accordingly, then pb.
+** After each push, we optionally rb to keep smaller indexes deeper in B,
+** which tends to make reinsertion (phase B) cheaper.
 */
-void	phase_a(int size, t_dlst **a, t_dlst **b)
+static void	phase_a(int size, t_dlst **a, t_dlst **b)
 {
-	int	step;
-	int	start;
-	int	end;
-	int	max;
-	int op;
+	int	ca;
+	int	pos;
 
-	op = 0;
-	step = chunk_step(size);
-	max = size - 1;
-	chunk_init(&start, &end, step, max);
 	while (size > 3)
 	{
-		if ((*a)->index >= start && (*a)->index <= end)
-		{
-			pb(a, b);
-			size--;
-			op++;
-		}
-		else if (!chunk_left(*a, start, end))
-            chunk_next(&start, &end, step, max);
-        else
-		{
-            ra_rra(a, start, end);
-			op++;
-		}
+		pos = best_pos_global(*a, size);
+		ca = cost_to_top_len(size, pos);
+		apply_a(a, &ca);
+		pb(a, b);
+		size--;
+		if (*b && (*b)->index < (size / 2))
+			rb(b);
 	}
-	FT_DEBUG(("PHASE A: %d RA_RRA: %d |\n", op, op-497));
 }
 
 /*
-** Reinsert all elements from B to A using cheapest moves.
+** Phase B: reinsert all elements from B back into A using cheapest moves.
+** We refresh positions in B, evaluate for each node in B the total cost to
+** rotate A to its target insertion position and rotate B to the node.
+** We apply merged rotations when possible (rr/rrr), finish remaining single
+** rotations, then pa the chosen element into A.
 */
-void   phase_b(t_dlst **a, t_dlst **b)
+static void	phase_b(t_dlst **a, t_dlst **b)
 {
-    int ca;
-    int cb;
-    int op;
+	int	ca;
+	int	cb;
 
-   	op = 0;
-    while (*b)
-    {
-        pick_cheapest(*a, *b, &ca, &cb);
-        apply_cheapest(a, b, ca, cb);
-        pa(a, b);
-        op += (ca > 0 ? ca : -ca) + (cb > 0 ? cb : -cb) + 1;
-    }
-	FT_DEBUG(("PHASE B: %d |\n", op));
+	while (*b)
+	{
+		update_pos(*b);
+		pick_cheapest(*a, *b, &ca, &cb);
+		apply_cheapest(a, b, ca, cb);
+		pa(a, b);
+	}
+}
+
+/*
+** Final rotate: once all values are back in A, align the stack.
+** We locate the position of the minimum index, convert it into a signed
+** rotation cost (ra if positive, rra if negative), then execute exactly
+** that cost so the smallest element ends up on top.
+*/
+static void	final_rotate(t_dlst **a)
+{
+	int	len;
+	int	pos;
+	int	cost;
+
+	len = db_lstsize(*a);
+	pos = find_min(*a);
+	cost = cost_to_top_len(len, pos);
+	while (cost > 0)
+	{
+		ra(a);
+		cost--;
+	}
+	while (cost < 0)
+	{
+		rra(a);
+		cost++;
+	}
+}
+
+/*
+** 1) Phase A pushes most elements to B while keeping moves low.
+** 2) Sort the remaining 3 elements in A (base case).
+** 3) Phase B reinserts everything from B into A with cheapest combined costs.
+** 4) Final rotate to place the smallest value at the top (fully sorted A).
+*/
+void	turk_sort(int size, t_dlst **a, t_dlst **b)
+{
+	phase_a(size, a, b);
+	sort_three(a);
+	phase_b(a, b);
+	final_rotate(a);
 }

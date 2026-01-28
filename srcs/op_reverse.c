@@ -6,14 +6,16 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 20:50:16 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 16:41:04 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-** Reverse rotate a stack by moving the last node to the front.
+** Reverse rotate a stack.
+** The last node is detached and moved to the front of the stack,
+** becoming the new head, while all prev/next links are updated.
 */
 static void	reverse_rotate(t_dlst **s)
 {

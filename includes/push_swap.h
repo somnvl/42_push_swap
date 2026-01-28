@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 22:33:26 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 16:52:46 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,6 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
-
-#define DEBUG 1
-
-#if DEBUG
-# define FT_DEBUG(x) ft_printf x
-#else
-# define FT_DEBUG(x)
-#endif
 
 typedef struct s_dlst
 {
@@ -67,16 +59,15 @@ void	sort_five(t_dlst **a, t_dlst **b);
 int		find_min(t_dlst *s);
 
 /* TURKISH ALGO */
-void	phase_a(int size, t_dlst **a, t_dlst **b);
-void	phase_b(t_dlst **a, t_dlst **b);
-
-int		chunk_step(int size);
-void	chunk_init(int *start, int *end, int step, int max);
-int		chunk_left(t_dlst *a, int start, int end);
-void	chunk_next(int *start, int *end, int step, int max);
-
+void	turk_sort(int size, t_dlst **a, t_dlst **b);
 void	pick_cheapest(t_dlst *a, t_dlst *b, int *ca, int *cb);
 void	apply_cheapest(t_dlst **a, t_dlst **b, int ca, int cb);
+
+void	apply_a(t_dlst **a, int *ca);
+void	update_pos(t_dlst *s);
+int		cost_to_top_len(int len, int pos);
+int		best_pos_global(t_dlst *a, int len_a);
+int		abs_i(int x);
 
 /* DEBUG */
 void	print_stack(t_dlst *lst, char name);

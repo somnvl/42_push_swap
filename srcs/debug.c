@@ -6,14 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 02:52:15 by so                #+#    #+#             */
-/*   Updated: 2026/01/25 18:38:56 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 16:33:13 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-** Print single stack showing values and indices.
+** Print a single stack with both values and indexes.
+** Each node is displayed as: value(index), linked by arrows.
 */
 void	print_stack(t_dlst *lst, char name)
 {
@@ -29,7 +30,9 @@ void	print_stack(t_dlst *lst, char name)
 }
 
 /*
-** Print both stacks A and B for debugging.
+** Print both stacks A and B in a readable format.
+** Useful to inspect the current state of the algorithm
+** between operations during debugging.
 */
 void	print_stacks(t_dlst *a, t_dlst *b)
 {

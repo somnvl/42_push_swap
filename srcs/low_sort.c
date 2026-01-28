@@ -6,14 +6,16 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 22:15:29 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 16:31:10 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-** Find position of minimum index in stack.
+** Find the position (0-based) of the smallest index in the stack.
+** We scan once, tracking the current minimum index and its position,
+** and return the position of that minimum to help choose rotations.
 */
 int	find_min(t_dlst *s)
 {
@@ -21,6 +23,8 @@ int	find_min(t_dlst *s)
 	int	pos;
 	int	min;
 
+	if (!s)
+		return (0);
 	i = 0;
 	pos = 0;
 	min = s->index;
@@ -38,7 +42,9 @@ int	find_min(t_dlst *s)
 }
 
 /*
-** Sort exactly 3 elements in stack A using minimal operations.
+** Sort exactly 3 nodes in stack A using the minimal set of operations.
+** We compare the three indexes and apply the known optimal cases
+** (sa/ra/rra or a 2-step combo) to reach ascending order.
 */
 void	sort_three(t_dlst **a)
 {
@@ -68,8 +74,9 @@ void	sort_three(t_dlst **a)
 }
 
 /*
-** Sort exactly 4 elements by moving min to top, pushing to B, 
-** sorting 3, then pulling back.
+** Sort exactly 4 nodes using stack B as temporary storage.
+** We bring the smallest index to the top of A with the cheapest rotation,
+** push it to B, sort the remaining 3 in A, then pa to restore the minimum.
 */
 void	sort_four(t_dlst **a, t_dlst **b)
 {
@@ -100,8 +107,9 @@ void	sort_four(t_dlst **a, t_dlst **b)
 }
 
 /*
-** Sort exactly 5 elements recursively by moving min to top, 
-** pushing to B, sorting 4, then pulling back.
+** Sort exactly 5 nodes by reducing the problem to sort_four.
+** We rotate A to bring the minimum index to the top, pb it to B,
+** sort the remaining 4 elements in A, then pa to put the minimum back.
 */
 void	sort_five(t_dlst **a, t_dlst **b)
 {
@@ -132,7 +140,8 @@ void	sort_five(t_dlst **a, t_dlst **b)
 }
 
 /*
-** Dispatch small input sorting (2-5 elements) to specialized functions.
+** Small-sort dispatcher for inputs up to 5 nodes.
+** Uses specialized routines (and B when needed) to keep move count low.
 */
 void	low_sort(int size, t_dlst **a, t_dlst **b)
 {

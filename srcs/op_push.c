@@ -6,16 +6,16 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 20:50:20 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 16:39:57 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-** Swap the first two nodes of a stack by relinking pointers.
-** The head becomes the second node, the second becomes the new head,
-** and the rest of the list remains unchanged.
+** Push the first node from src stack to the top of dst stack.
+** The head of src is detached and becomes the new head of dst,
+** while preserving correct prev/next links on both stacks.
 */
 static void	push(t_dlst **src, t_dlst **dst)
 {

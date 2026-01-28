@@ -2,11 +2,11 @@
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
-/*                                                    +:+ +:+              */
-/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
+/*                                                    +:+ +:+         +:+     */
+/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/19 22:13:02 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/25 19:11:20 by somenvie         ###   ########.fr       */
+/*   Created: 2026/01/28 16:25:17 by so                #+#    #+#             */
+/*   Updated: 2026/01/28 16:36:35 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 
 /*
 ** Free a doubly-linked list of t_dlst nodes.
-** Iterates through the list, releasing each node to avoid memory leaks.
+** Walks forward using a temporary pointer, frees each node, and leaves
+** no allocations behind. Safe to call with NULL.
 */
 void	free_list(t_dlst *lst)
 {
@@ -29,8 +30,9 @@ void	free_list(t_dlst *lst)
 }
 
 /*
-** Check if a stack is already sorted in ascending order.
-** Returns 1 if empty, one element, or fully sorted; 0 otherwise.
+** Check if stack A is already sorted in ascending order by value.
+** Empty or single-node stacks are considered sorted (returns 1).
+** Returns 0 as soon as a descending pair is found.
 */
 static int	already_sorted(t_dlst *a)
 {
@@ -49,49 +51,13 @@ static int	already_sorted(t_dlst *a)
 }
 
 /*
-** Rotate sorted stack A to place minimum index at top.
+** Program entry point:
+** 1) Parse and validate arguments into stack A (stack B starts empty).
+** 2) Early exits: no args, parse error, or already sorted input.
+** 3) Normalize values into indexes for algorithmic comparisons.
+** 4) Dispatch: small inputs use low_sort, larger inputs use turk_sort.
+** 5) Free both stacks before exiting.
 */
-static void final_rotate(t_dlst **a)
-{
-    int len;
-    int pos;
-    int op;
-
-    op = 0;
-    len = db_lstsize(*a);
-    pos = find_min(*a);
-    if (pos <= len / 2)
-    {
-        while (pos-- > 0)
-        {
-            ra(a);
-            op++;
-        }
-    }
-    else
-    {
-        while (pos++ < len)
-        {
-            rra(a);
-            op++;
-        }
-    }
-	FT_DEBUG(("FINAL PHASE: %d |\n", op));
-}
-
-/*
-** Apply the Turkish sorting strategy for larger inputs.
-** Splits work into phase A (push by chunks), sorts the remaining three in A,
-** then reinserts from B and finally rotates A to its final sorted position.
-*/
-static void	turk_sort(int size, t_dlst **a, t_dlst **b)
-{
-	phase_a(size, a, b);
-	sort_three(a);
-	phase_b(a, b);
-	final_rotate(a);
-}
-
 int	main(int argc, char **argv)
 {
 	t_dlst	*a;

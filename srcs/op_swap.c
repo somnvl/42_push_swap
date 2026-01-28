@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 20:50:11 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 16:42:25 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,8 @@
 
 /*
 ** Swap the first two nodes of a stack by relinking pointers.
-** The second node becomes the new head, the first moves to second place, 
-** and the rest of the list is reattached unchanged.
-** No node content is modified.
+** The second node becomes the new head, the first moves to second place,
+** and the rest of the list remains unchanged.
 */
 static void	swap(t_dlst **s)
 {

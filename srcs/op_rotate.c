@@ -6,14 +6,16 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 20:50:13 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 16:41:30 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-** Rotate a stack by moving the first node to the end of the list.
+** Rotate a stack.
+** The first node is detached and moved to the end of the list,
+** becoming the new tail, while all prev/next links are updated.
 */
 static void	rotate(t_dlst **s)
 {

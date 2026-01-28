@@ -6,14 +6,15 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/06 19:05:11 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/25 18:42:16 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 17:05:33 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 /*
-** Check if argv string contains spaces (indicating quoted input).
+** Detect if an argv entry contains spaces (quoted input like "1 2 3").
+** If it contains at least one space, we will split it into multiple tokens.
 */
 static int	is_quoted(char *argv)
 {
@@ -30,7 +31,8 @@ static int	is_quoted(char *argv)
 }
 
 /*
-** Free memory from split string array.
+** Free a NULL-terminated array returned by ft_split.
+** Frees each token, then frees the array pointer itself.
 */
 void	free_split(char **split)
 {
@@ -46,7 +48,9 @@ void	free_split(char **split)
 }
 
 /*
-** Convert string to long integer with sign handling.
+** Convert a numeric string to a long.
+** Handles optional leading '+' or '-' and assumes the string is digit-only
+** afterwards (validation is expected to happen elsewhere in parsing).
 */
 static long	ft_atol(const char *nb)
 {
@@ -72,7 +76,10 @@ static long	ft_atol(const char *nb)
 }
 
 /*
-** Parse string to int and add to list, validate INT range.
+** Convert one token to an int and append it to the list.
+** The token is converted as long, checked against INT range,
+** then stored as int in a new node added at the back.
+** Returns 1 on success, 0 on overflow/underflow.
 */
 static int	lst_nbr(t_dlst **lst, char *str)
 {
@@ -86,7 +93,13 @@ static int	lst_nbr(t_dlst **lst, char *str)
 }
 
 /*
-** Create stack list from argv, handling quoted multi-number strings.
+** Build the initial stack (list) from program arguments.
+** Each argv element is either:
+** - a single number token, or
+** - a quoted string containing multiple numbers separated by spaces.
+** For quoted strings, we split, validate, append each number, then free split.
+** On any error (allocation failure or out-of-range value), we free everything
+** built so far and return NULL.
 */
 t_dlst	*lst_creator(int argc, char **argv)
 {
