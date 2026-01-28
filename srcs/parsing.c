@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:34 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 17:31:31 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 17:32:25 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 /*
 ** Validate that argv strings contain only:
-** - digits and spaces,
+** - digits and spaces, 
 ** - optional '+'/'-' signs placed correctly.
 ** Rejects empty strings, missplaced signs, and invalid characters.
 */
