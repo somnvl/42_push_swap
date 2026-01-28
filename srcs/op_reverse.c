@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 18:15:58 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:56:24 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,28 +37,31 @@ static void	reverse_rotate(t_dlst **s)
 ** (reverse rotate a): Shift down all elements of stack a by 1.
 ** The last element becomes the first one.
 */
-void	rra(t_dlst **a)
+void	rra(t_dlst **a, int print)
 {
 	reverse_rotate(a);
-	write(2, "rra\n", 4);
+	if (print == 1)
+		ft_printf("rra\n");
 }
 
 /* 
 ** (reverse rotate b): Shift down all elements of stack b by 1.
 ** The last element becomes the first one.
 */
-void	rrb(t_dlst **b)
+void	rrb(t_dlst **b, int print)
 {
 	reverse_rotate(b);
-	write(2, "rrb\n", 4);
+	if (print == 1)
+		ft_printf("rrb\n");
 }
 
 /*
 ** rra and rrb at the same time.
 */
-void	rrr(t_dlst **a, t_dlst **b)
+void	rrr(t_dlst **a, t_dlst **b, int print)
 {
 	reverse_rotate(a);
 	reverse_rotate(b);
-	write(2, "rrr\n", 4);
+	if (print == 1)
+		ft_printf("rrr\n");
 }

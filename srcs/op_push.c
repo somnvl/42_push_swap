@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 18:15:36 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 19:16:09 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,18 +38,20 @@ static void	push(t_dlst **src, t_dlst **dst)
 ** (push a) Take the first element at the top of b and put it at the top of a.
 ** Do nothing if b is empty.
 */
-void	pa(t_dlst **a, t_dlst **b)
+void	pa(t_dlst **a, t_dlst **b, int print)
 {
 	push(b, a);
-	write(2, "pa\n", 3);
+	if (print == 1)
+		ft_printf("pa\n");
 }
 
 /*
 ** (push b): Take the first element at the top of a and put it at the top of b.
 ** Do nothing if a is empty.
 */
-void	pb(t_dlst **a, t_dlst **b)
+void	pb(t_dlst **a, t_dlst **b, int print)
 {
 	push(a, b);
-	write(2, "pb\n", 3);
+	if (print == 1)
+		ft_printf("pb\n");
 }

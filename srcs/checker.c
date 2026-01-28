@@ -6,11 +6,23 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:58:08 by so                #+#    #+#             */
-/*   Updated: 2026/01/28 18:28:08 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 19:26:53 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	free_list(t_dlst *lst)
+{
+	t_dlst	*tmp;
+
+	while (lst)
+	{
+		tmp = lst->next;
+		free(lst);
+		lst = tmp;
+	}
+}
 
 static int	check_op(const char *s1, const char *s2)
 {
@@ -25,28 +37,44 @@ static int	check_op(const char *s1, const char *s2)
 static int	exec_op(char *op, t_dlst **a, t_dlst **b)
 {
 	if (check_op(op, "sa\n"))
-		return (sa(a), 1);
+		return (sa(a, 0), 1);
 	if (check_op(op, "sb\n"))
-		return (sb(b), 1);
+		return (sb(b, 0), 1);
 	if (check_op(op, "ss\n"))
-		return (ss(a, b), 1);
+		return (ss(a, b, 0), 1);
 	if (check_op(op, "pa\n"))
-		return (pa(a, b), 1);
+		return (pa(a, b, 0), 1);
 	if (check_op(op, "pb\n"))
-		return (pb(a, b), 1);
+		return (pb(a, b, 0), 1);
 	if (check_op(op, "ra\n"))
-		return (ra(a), 1);
+		return (ra(a, 0), 1);
 	if (check_op(op, "rb\n"))
-		return (rb(b), 1);
+		return (rb(b, 0), 1);
 	if (check_op(op, "rr\n"))
-		return (rr(a, b), 1);
+		return (rr(a, b, 0), 1);
 	if (check_op(op, "rra\n"))
-		return (rra(a), 1);
+		return (rra(a, 0), 1);
 	if (check_op(op, "rrb\n"))
-		return (rrb(b), 1);
+		return (rrb(b, 0), 1);
 	if (check_op(op, "rrr\n"))
-		return (rrr(a, b), 1);
+		return (rrr(a, b, 0), 1);
 	return (0);
+}
+
+static int	already_sorted(t_dlst *a)
+{
+	t_dlst	*current;
+
+	if (!a || !a->next)
+		return (1);
+	current = a;
+	while (current->next)
+	{
+		if (current->content > current->next->content)
+			return (0);
+		current = current->next;
+	}
+	return (1);
 }
 
 int	main(int argc, char **argv)
@@ -70,9 +98,9 @@ int	main(int argc, char **argv)
 		free(line);
 		line = get_next_line(0);
 	}
-	if (b == NULL && is_sorted(a))
-		write(1, "OK\n", 3);
+	if (b == NULL && already_sorted(a))
+		ft_printf("OK\n");
 	else
-		write(1, "KO\n", 3);
-	return (free(line), free_list(a), free_list(b), 0);
+		ft_printf("KO\n");
+	return (free_list(a), free_list(b), 0);
 }

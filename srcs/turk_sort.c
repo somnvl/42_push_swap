@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:22:10 by so                #+#    #+#             */
-/*   Updated: 2026/01/28 17:07:52 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:54:35 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ static void	phase_a(int size, t_dlst **a, t_dlst **b)
 		pos = best_pos_global(*a, size);
 		ca = cost_to_top_len(size, pos);
 		apply_a(a, &ca);
-		pb(a, b);
+		pb(a, b, 1);
 		size--;
 		if (*b && (*b)->index < (size / 2))
-			rb(b);
+			rb(b, 1);
 	}
 }
 
@@ -53,7 +53,7 @@ static void	phase_b(t_dlst **a, t_dlst **b)
 		update_pos(*b);
 		pick_cheapest(*a, *b, &ca, &cb);
 		apply_cheapest(a, b, ca, cb);
-		pa(a, b);
+		pa(a, b, 1);
 	}
 }
 
@@ -74,12 +74,12 @@ static void	final_rotate(t_dlst **a)
 	cost = cost_to_top_len(len, pos);
 	while (cost > 0)
 	{
-		ra(a);
+		ra(a, 1);
 		cost--;
 	}
 	while (cost < 0)
 	{
-		rra(a);
+		rra(a, 1);
 		cost++;
 	}
 }

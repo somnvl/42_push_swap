@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 19:42:15 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 16:31:10 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:53:24 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,20 +56,20 @@ void	sort_three(t_dlst **a)
 	second = (*a)->next->index;
 	third = (*a)->next->next->index;
 	if (first > second && second < third && first < third)
-		sa(a);
+		sa(a, 1);
 	else if (first > second && second < third && first > third)
-		ra(a);
+		ra(a, 1);
 	else if (first < second && second > third && first < third)
 	{
-		sa(a);
-		ra(a);
+		sa(a, 1);
+		ra(a, 1);
 	}
 	else if (first < second && second > third && first > third)
-		rra(a);
+		rra(a, 1);
 	else if (first > second && second > third)
 	{
-		sa(a);
-		rra(a);
+		sa(a, 1);
+		rra(a, 1);
 	}
 }
 
@@ -89,7 +89,7 @@ void	sort_four(t_dlst **a, t_dlst **b)
 	{
 		while (min_pos > 0)
 		{
-			ra(a);
+			ra(a, 1);
 			min_pos--;
 		}
 	}
@@ -97,13 +97,13 @@ void	sort_four(t_dlst **a, t_dlst **b)
 	{
 		while (min_pos < size)
 		{
-			rra(a);
+			rra(a, 1);
 			min_pos++;
 		}
 	}
-	pb(a, b);
+	pb(a, b, 1);
 	sort_three(a);
-	pa(a, b);
+	pa(a, b, 1);
 }
 
 /*
@@ -122,7 +122,7 @@ void	sort_five(t_dlst **a, t_dlst **b)
 	{
 		while (min_pos > 0)
 		{
-			ra(a);
+			ra(a, 1);
 			min_pos--;
 		}
 	}
@@ -130,13 +130,13 @@ void	sort_five(t_dlst **a, t_dlst **b)
 	{
 		while (min_pos < size)
 		{
-			rra(a);
+			rra(a, 1);
 			min_pos++;
 		}
 	}
-	pb(a, b);
+	pb(a, b, 1);
 	sort_four(a, b);
-	pa(a, b);
+	pa(a, b, 1);
 }
 
 /*
@@ -146,7 +146,7 @@ void	sort_five(t_dlst **a, t_dlst **b)
 void	low_sort(int size, t_dlst **a, t_dlst **b)
 {
 	if (size == 2)
-		sa(a);
+		sa(a, 1);
 	else if (size == 3)
 		sort_three(a);
 	else if (size == 4)

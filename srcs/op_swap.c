@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/21 22:06:50 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 18:16:48 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:56:30 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,28 +41,31 @@ static void	swap(t_dlst **s)
 ** (swap a): Swap the first 2 elements at the top of stack a.
 ** Do nothing if there is only one element or none.
 */
-void	sa(t_dlst **a)
+void	sa(t_dlst **a, int print)
 {
 	swap(a);
-	write(2, "sa\n", 3);
+	if (print == 1)
+		ft_printf("sa\n");
 }
 
 /*
 ** (swap b): Swap the first 2 elements at the top of stack b.
 ** Do nothing if there is only one element or none.
 */
-void	sb(t_dlst **b)
+void	sb(t_dlst **b, int print)
 {
 	swap(b);
-	write(2, "sb\n", 3);
+	if (print == 1)
+		ft_printf("sb\n");
 }
 
 /*
 ** sa and sb at the same time.
 */
-void	ss(t_dlst **a, t_dlst **b)
+void	ss(t_dlst **a, t_dlst **b, int print)
 {
 	swap(a);
 	swap(b);
-	write(2, "ss\n", 3);
+	if (print == 1)
+		ft_printf("ss\n");
 }

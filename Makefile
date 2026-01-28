@@ -6,7 +6,7 @@
 #    By: so <so@student.42.fr>                      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2026/01/28 17:55:44 by so                #+#    #+#              #
-#    Updated: 2026/01/28 18:28:28 by so               ###   ########.fr        #
+#    Updated: 2026/01/28 19:25:59 by so               ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,27 +31,27 @@ COMMON_SRCS = $(SRC_DIR)/parsing.c \
               $(SRC_DIR)/op_rotate.c \
               $(SRC_DIR)/op_reverse.c \
               $(SRC_DIR)/normalize.c \
-              $(SRC_DIR)/debug.c
-
-PUSH_SRCS   = $(SRC_DIR)/main.c \
+              $(SRC_DIR)/debug.c \
               $(SRC_DIR)/low_sort.c \
               $(SRC_DIR)/turk_sort.c \
               $(SRC_DIR)/turk_utils.c \
               $(SRC_DIR)/turk_pick.c \
               $(SRC_DIR)/turk_apply.c
 
-BONUS_SRCS  = $(SRC_DIR)/checker.c \
+SRCS        = $(SRC_DIR)/main.c
 
-PUSH_OBJ    = $(addprefix $(OBJ_DIR)/, $(notdir $(PUSH_SRCS:.c=.o)))
+BONUS_SRCS  = $(SRC_DIR)/checker.c
+
 COMMON_OBJ  = $(addprefix $(OBJ_DIR)/, $(notdir $(COMMON_SRCS:.c=.o)))
+OBJ         = $(addprefix $(OBJ_DIR)/, $(notdir $(SRCS:.c=.o)))
 BONUS_OBJ   = $(addprefix $(OBJ_DIR)/, $(notdir $(BONUS_SRCS:.c=.o)))
 
 .PHONY: all clean fclean re bonus
 
 all: $(NAME)
 
-$(NAME): $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(PUSH_OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(COMMON_OBJ) $(PUSH_OBJ) $(LIBFT)
+$(NAME): $(LIBFT) $(OBJ_DIR) $(COMMON_OBJ) $(OBJ)
+	$(CC) $(CFLAGS) -o $(NAME) $(COMMON_OBJ) $(OBJ) $(LIBFT)
 
 bonus: $(BONUS_NAME)
 

@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 00:12:31 by somenvie          #+#    #+#             */
-/*   Updated: 2026/01/28 18:24:10 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 19:09:45 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ t_dlst	*lst_creator(int argc, char **argv);
 void	normalize(t_dlst *lst);
 
 /* OPERATIONS */
-void	sa(t_dlst **a);
-void	sb(t_dlst **b);
-void	ss(t_dlst **a, t_dlst **b);
-void	pa(t_dlst **a, t_dlst **b);
-void	pb(t_dlst **a, t_dlst **b);
-void	ra(t_dlst **a);
-void	rb(t_dlst **b);
-void	rr(t_dlst **a, t_dlst **b);
-void	rra(t_dlst **a);
-void	rrb(t_dlst **b);
-void	rrr(t_dlst **a, t_dlst **b);
+void	sa(t_dlst **a, int print);
+void	sb(t_dlst **b, int print);
+void	ss(t_dlst **a, t_dlst **b, int print);
+void	pa(t_dlst **a, t_dlst **b, int print);
+void	pb(t_dlst **a, t_dlst **b, int print);
+void	ra(t_dlst **a, int print);
+void	rb(t_dlst **b, int print);
+void	rr(t_dlst **a, t_dlst **b, int print);
+void	rra(t_dlst **a, int print);
+void	rrb(t_dlst **b, int print);
+void	rrr(t_dlst **a, t_dlst **b, int print);
 
 /* EARLY EXIT */
 void	low_sort(int size, t_dlst **a, t_dlst **b);
@@ -68,7 +68,6 @@ void	update_pos(t_dlst *s);
 int		cost_to_top_len(int len, int pos);
 int		best_pos_global(t_dlst *a, int len_a);
 int		abs_i(int x);
-int		already_sorted(t_dlst *a);
 
 /* DEBUG */
 void	print_stack(t_dlst *lst, char name);

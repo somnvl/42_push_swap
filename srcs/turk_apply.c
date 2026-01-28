@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/24 20:05:45 by so                #+#    #+#             */
-/*   Updated: 2026/01/28 16:52:30 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 18:53:59 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,13 @@ static void	apply_both(t_dlst **a, t_dlst **b, int *ca, int *cb)
 {
 	while (*ca > 0 && *cb > 0)
 	{
-		rr(a, b);
+		rr(a, b, 1);
 		(*ca)--;
 		(*cb)--;
 	}
 	while (*ca < 0 && *cb < 0)
 	{
-		rrr(a, b);
+		rrr(a, b, 1);
 		(*ca)++;
 		(*cb)++;
 	}
@@ -43,12 +43,12 @@ void	apply_a(t_dlst **a, int *ca)
 {
 	while (*ca > 0)
 	{
-		ra(a);
+		ra(a, 1);
 		(*ca)--;
 	}
 	while (*ca < 0)
 	{
-		rra(a);
+		rra(a, 1);
 		(*ca)++;
 	}
 }
@@ -62,12 +62,12 @@ static void	apply_b(t_dlst **b, int *cb)
 {
 	while (*cb > 0)
 	{
-		rb(b);
+		rb(b, 1);
 		(*cb)--;
 	}
 	while (*cb < 0)
 	{
-		rrb(b);
+		rrb(b, 1);
 		(*cb)++;
 	}
 }
