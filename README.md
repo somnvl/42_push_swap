@@ -177,7 +177,7 @@ valgrind --leak-check=full --show-leak-kinds=all \
 # Checker only
 valgrind --leak-check=full --show-leak-kinds=all \
 ./checker 3 2 1 << EOF
-sa
+sa 
 rra
 EOF
 
