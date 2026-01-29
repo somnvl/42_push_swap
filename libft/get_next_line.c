@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_bonus.c                              :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
+/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/24 18:57:27 by somenvie          #+#    #+#             */
-/*   Updated: 2025/12/17 00:07:34 by somenvie         ###   ########.fr       */
+/*   Updated: 2026/01/29 02:01:16 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ static char	*read_file(int fd, char *stash)
 		if (!stash)
 			stash = ft_strdup(buffer);
 		else
-			stash = ft_strjoin(stash, buffer);
+			stash = gnl_strjoin(stash, buffer);
 		if (gnl_check(buffer) == 1)
 			return (free(buffer), stash);
 		free(buffer);

@@ -20,6 +20,8 @@ push_swap/
 ├── obj/
 ├── srcs/
 │   ├── debug.c
+|   ├── checker.c
+|   ├── checker_utils.c
 │   ├── low_sort.c
 │   ├── lst_creator.c
 │   ├── lst_manager.c
@@ -63,17 +65,143 @@ make re           # Clean rebuild
 
 **Compiler flags:** `-Wall -Wextra -Werror -g`
 
-### Test Commands
+### Basic Test
 
 ```bash
-# Test with validation (pass/fail check)
-ARG=$(shuf -i 1-100 -n 100 | xargs); ./push_swap $ARG | ./checker_linux $ARG
 
-# Count total operations for random integers
-./push_swap $(shuf -i 0-100 -n 100 | xargs) | wc -l
+# No arguments
+./push_swap
 
-# Combined: count operations AND validate correctness
-ARG=$(shuf -i 1-100 -n 100 | xargs); ./push_swap $ARG | tee >(wc -l) | ./checker_linux $ARG
+# Single number (no output expected)
+./push_swap 42
+
+# Already sorted
+./push_swap 1 2 3 4 5
+
+# Reverse sorted
+./push_swap 5 4 3 2 1
+
+```
+
+### Error handling tests (must print Error)
+
+```bash
+# Non-numeric argument
+./push_swap 1 2 a 3
+
+# Duplicates
+./push_swap 1 2 3 2
+
+# Integer overflow
+./push_swap 2147483648
+./push_swap -2147483649
+
+# Empty / whitespace arguments
+./push_swap "" "   "
+```
+
+### Checker validation tests (OK / KO)
+
+```bash
+# Simple test
+ARG="3 2 1"
+./push_swap $ARG | ./checker $ARG
+
+# Random test (100 numbers)
+ARG=$(shuf -i 1-100 -n 100 | xargs)
+./push_swap $ARG | ./checker $ARG
+
+# Random test (500 numbers)
+ARG=$(shuf -i 1-500 -n 500 | xargs)
+./push_swap $ARG | ./checker $ARG
+```
+
+### Operation count tests
+
+```bash
+# Size 3
+./push_swap 3 2 1 | wc -l
+
+# Size 5
+./push_swap 5 4 3 2 1 | wc -l
+
+# Size 100
+./push_swap $(shuf -i 0-1000 -n 100 | xargs) | wc -l
+
+# Size 500
+./push_swap $(shuf -i 0-1000 -n 500 | xargs) | wc -l
+```
+
+### Validation + operation count
+
+```bash
+ARG=$(shuf -i 1-100 -n 100 | xargs)
+./push_swap $ARG | tee >(wc -l) | ./checker $ARG
+
+ARG=$(shuf -i 1-1000 -n 500 | xargs)
+./push_swap $ARG | tee >(wc -l) | ./checker $ARG
+```
+
+### Stress tests (loop)
+
+```bash
+# 100 runs, size 100
+for i in {1..100}; do
+  ARG=$(shuf -i 1-1000 -n 100 | xargs)
+  ./push_swap $ARG | ./checker $ARG || break
+done
+
+# 50 runs, size 500
+for i in {1..50}; do
+  ARG=$(shuf -i 1-5000 -n 500 | xargs)
+  ./push_swap $ARG | ./checker $ARG || break
+done
+```
+
+### Valgrind tests (push_swap)
+
+```bash
+# Simple memory check
+valgrind --leak-check=full --show-leak-kinds=all \
+./push_swap 3 2 1
+
+# Random test with checker
+ARG=$(shuf -i 1-100 -n 100 | xargs)
+valgrind --leak-check=full --show-leak-kinds=all \
+./push_swap $ARG | ./checker $ARG
+```
+
+### Valgrind tests (checker – pipe safe)
+
+```bash
+# Checker only
+valgrind --leak-check=full --show-leak-kinds=all \
+./checker 3 2 1 << EOF
+sa
+rra
+EOF
+
+# push_swap → checker (pipe)
+ARG=$(shuf -i 1-100 -n 100 | xargs)
+valgrind --leak-check=full --show-leak-kinds=all \
+./push_swap $ARG | ./checker $ARG
+```
+
+### Invalid instruction test (checker)
+
+```bash
+ARG="3 2 1"
+echo -e "sa\nINVALID_OP\nra" | ./checker $ARG
+```
+
+### Quick benchmarks (42 goals)
+
+```bash
+# 100 numbers (target < 700 operations)
+./push_swap $(shuf -i 0-1000 -n 100 | xargs) | wc -l
+
+# 500 numbers (target < 5500 operations)
+./push_swap $(shuf -i 0-5000 -n 500 | xargs) | wc -l
 ```
 
 ---
@@ -227,3 +355,30 @@ typedef struct s_dlst {
 **Doubly-linked list** allows efficient rotations, reverse rotations, and position tracking during cost computation.
 
 ---
+
+# Bonus - CHECKER
+
+This project includes a bonus program: *checker*.
+
+The checker validates whether the list of operations produced by push_swap correctly sorts the given stack according to the project rules.
+
+The checker program:
+- Takes the same arguments as push_swap
+- Reads a list of operations from standard input
+- Applies them to stacks A and B
+- Verifies the final state of the stacks
+
+It prints:
+- **OK** → if stack A is sorted in ascending order and stack B is empty
+- **KO** → if the stacks are not in the expected final state
+- **Error** → if an invalid instruction or input is encountered
+
+## Internal Logic
+1. Parse arguments → initialize stack A
+2. Initialize stack B = NULL
+3. Read operations from stdin:
+     - Execute operation
+     - If invalid → Error
+4. Check final state:
+     - A sorted and B empty → OK
+     - Otherwise → KO

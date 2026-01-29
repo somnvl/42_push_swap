@@ -6,7 +6,7 @@
 /*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 17:58:08 by so                #+#    #+#             */
-/*   Updated: 2026/01/28 20:47:30 by so               ###   ########.fr       */
+/*   Updated: 2026/01/28 21:07:54 by so               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,11 @@ static void	drain_stdin_until_eof(void)
 ** optionally drain stdin if input is not interactive,
 ** and return an error code.
 */
-static int	error_exit(t_dlst *a, t_dlst *b, char *line)
+static int	error_exit(t_dlst *a, t_dlst *b, char **line)
 {
 	write(2, "Error\n", 6);
 	if (line)
-		free(line);
+		free(*line);
 	if (!isatty(0))
 		drain_stdin_until_eof();
 	free_list(a);
@@ -58,10 +58,11 @@ static int	read_and_apply_ops(t_dlst **a, t_dlst **b)
 	while (line)
 	{
 		if (!exec_op(line, a, b))
-			return (error_exit(*a, *b, line));
+			return (error_exit(*a, *b, &line));
 		free(line);
 		line = get_next_line(0);
 	}
+	free(line);
 	return (0);
 }
 
