@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: so <so@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: somenvie <somenvie@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 16:25:17 by so                #+#    #+#             */
-/*   Updated: 2026/01/28 20:10:49 by so               ###   ########.fr       */
+/*   Updated: 2026/01/29 19:33:22 by somenvie         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ int	main(int argc, char **argv)
 	if (argc < 2)
 		return (free_list(a), 0);
 	if (!a)
-		return (free_list(a), ft_printf("Error\n"), 1);
+		return (free_list(a), write(2, "Error\n", 6), 1);
 	if (already_sorted(a))
 		return (free_list(a), 0);
 	normalize(a);
