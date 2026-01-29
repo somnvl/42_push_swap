@@ -8,7 +8,7 @@ The project combines several algorithmic concepts:
 - **Sorting algorithms** - Understanding of different approaches (small arrays vs large arrays)
 - **Stack-based operations** - Manipulation through restricted operations only
 - **Optimization** - Cost-based decision making to minimize moves
-- **Data structures** - Doubly-linked lists for efficient stack operations
+- **Data structures** - Double-linked lists for efficient stack operations
 
 ## Project Structure
 
